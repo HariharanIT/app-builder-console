@@ -8,6 +8,7 @@ export const uploadFile = async ({
 }: {
   productInfo: IProductInfoDefaultObj;
 }) => {
+  console.log({productInfo});
   const formData = new FormData();
   for (let key in productInfo) {
     // @ts-ignore

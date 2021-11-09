@@ -65,6 +65,10 @@ export const projectByIdQuery = gql`
       pstn_password
       pstn_account
       video_profile
+      frontend_deploy_status
+      backend_deploy_status
+      frontend_endpoint
+      backend_endpoint
     }
   }
 `;
