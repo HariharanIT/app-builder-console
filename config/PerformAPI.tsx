@@ -547,8 +547,8 @@ const convertToVercel = (code: String, varcelState: any) => {
     configJson: {
       PRODUCT_ID: varcelState.Product_id,
       APP_NAME: varcelState.HEADING,
-      LOGO: varcelState.logoRect || "",
-      ICON: varcelState.logoSquare ||"",
+      LOGO: varcelState.logoRect || '',
+      ICON: varcelState.logoSquare || '',
       APP_ID: varcelState.AppID,
       PRIMARY_COLOR: varcelState.primaryColor,
       FRONTEND_ENDPOINT: '',
