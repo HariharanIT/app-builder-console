@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import {TabPanel} from './AppBuilderVerticalTabContent';
 import {useLivePreview} from './LivePreviewContext';
