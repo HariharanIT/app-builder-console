@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {useRef, useContext} from 'react';
+import React, {useContext} from 'react';
 import {useRouter} from 'next/router';
 import {
   Box,
@@ -9,31 +9,16 @@ import {
   Theme,
   Link,
   Toolbar,
-  CircularProgress,
-  Snackbar,
 } from '@material-ui/core';
-import {useQuery} from '@apollo/client';
 import MuiAlert from '@material-ui/lab/Alert';
 import Deploy from '../components/DeployDilog';
-import {strValidation} from '../components/validation';
-import getURLValue from '../components/getURLparameterValue';
-import {projectByIdQuery} from '../graphql/queries';
-
-import {useEffect} from 'react';
 import AppBuilderControls from '../components/AppBuilderControls';
-import ExitConfirmationModal from '../components/ExitConfirmationModal';
 import LivePreview from '../components/LivePreview';
 import {
-  productInfoDefaultObj,
   productInfoDefaultErrorObj,
   IProductInfoDefaultObj,
 } from '../constants/productInfoDefaults';
-import reservedNames from '../constants/reservedNames';
-import {
-  ProductInfoProvider,
-  updateProductInfo,
-  useProductInfo,
-} from '../components/ProductInfoContext';
+import {ProductInfoProvider} from '../components/ProductInfoContext';
 import AppBuilderCustomizeTabs from '../components/AppBuilderCustomizeTabs';
 import {VerticalTabProvider} from '../components/VerticalTabContext';
 import ApiStatusContext from '../components/APIContext';

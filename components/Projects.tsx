@@ -263,7 +263,7 @@ const Projects = ({
       setLoading(false);
       setAPIError('');
     }
-  }, [data]);
+  }, [data, setProjectList, setLoading, setAPIError]);
 
   React.useEffect(() => {
     if (loading) {
@@ -272,7 +272,7 @@ const Projects = ({
     if (error) {
       setAPIError(error.message);
     }
-  }, [loading, error]);
+  }, [loading, error, setLoading, setAPIError]);
   // React.useEffect(() => {
   //   console.log('skipdataupdated', skipData);
   //   getProjectList(projectListQuery(skipData));

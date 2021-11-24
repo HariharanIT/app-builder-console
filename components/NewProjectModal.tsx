@@ -78,7 +78,7 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
       setAPIError(error.message);
       setLoading(false);
     }
-  }, [loading, error]);
+  }, [loading, error, setLoading, setAPIError]);
 
   useEffect(() => {
     if (data) {
@@ -86,7 +86,7 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
       setLoading(false);
       router.push(`/builder?id=${createProject.id}`);
     }
-  }, [data]);
+  }, [data, setLoading]);
   const handleCreateNewProject = () => {
     if (projectName === '') {
       setValidation(true);

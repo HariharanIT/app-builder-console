@@ -128,4 +128,4 @@ const CustomizedDialogs = ({
   );
 };
 
-export default CustomizedDialogs;;
+export default CustomizedDialogs;

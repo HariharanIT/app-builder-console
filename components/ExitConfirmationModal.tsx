@@ -15,12 +15,10 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import {useRouter} from 'next/router';
 
 interface IExitConfirmation {
-    showConfirmBox: boolean;
-    setShowConfirmBox: (isShow: boolean) => void;
-    handleProjectSave: () => any;
+  showConfirmBox: boolean;
+  setShowConfirmBox: (isShow: boolean) => void;
+  handleProjectSave: () => any;
 }
-
-
 const useSideNavStyles = makeStyles((theme: Theme) =>
   createStyles({
     containerGrid: {
@@ -77,7 +75,7 @@ const useSideNavStyles = makeStyles((theme: Theme) =>
       },
     },
     active: {
-      display:"grid",
+      display: 'grid',
       width: '280px',
       transition: '400ms',
       height: 'calc(100vh - 70px)',
@@ -128,74 +126,81 @@ const useSideNavStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const ExitConfirmationModal = ({ showConfirmBox, setShowConfirmBox, handleProjectSave } : IExitConfirmation) => {
-    const SideBarClasses = useSideNavStyles();
-    const router = useRouter();
-
-    return (
-        <Dialog
-        open={showConfirmBox}
-        classes={{
-          paper: SideBarClasses.closeDialog,
-        }}
-        onClose={() => {
-          setShowConfirmBox(false);
-        }}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description">
-        <Box p={12}>
-          <DialogTitle
-            id="alert-dialog-title"
-            style={{padding: '5px 0px 0px 0px'}}>
-            <Box display="grid" justifyContent="center">
-              <IconButton
-                style={{color: '#349dfb', padding: '0px'}}
-                aria-label="close"
-                onClick={() => {
-                  setShowConfirmBox(false);
-                }}>
-                <InfoOutlinedIcon style={{fontSize: '40px'}} />
-              </IconButton>
-              <Box fontSize="26px" style={{color: '#349dfb'}}>
-                Save your project
-              </Box>
-            </Box>
-          </DialogTitle>
-          <DialogContent>
-            <Box fontSize="18px">Do you want to save your changes?</Box>
-          </DialogContent>
-          <DialogActions
-            style={{justifyContent: 'center', marginBottom: '10px'}}>
-            <Button
-              variant="outlined"
+const ExitConfirmationModal = ({
+  showConfirmBox,
+  setShowConfirmBox,
+  handleProjectSave,
+}: IExitConfirmation) => {
+  const SideBarClasses = useSideNavStyles();
+  const router = useRouter();
+  return (
+    <Dialog
+      open={showConfirmBox}
+      classes={{
+        paper: SideBarClasses.closeDialog,
+      }}
+      onClose={() => {
+        setShowConfirmBox(false);
+      }}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description">
+      <Box p={12}>
+        <DialogTitle
+          id="alert-dialog-title"
+          style={{padding: '5px 0px 0px 0px'}}>
+          <Box display="grid" justifyContent="center">
+            <IconButton
+              style={{color: '#349dfb', padding: '0px'}}
+              aria-label="close"
               onClick={() => {
                 setShowConfirmBox(false);
+              }}>
+              <InfoOutlinedIcon style={{fontSize: '40px'}} />
+            </IconButton>
+            <Box fontSize="26px" style={{color: '#349dfb'}}>
+              Save your project
+            </Box>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <Box fontSize="18px">Do you want to save your changes?</Box>
+        </DialogContent>
+        <DialogActions style={{justifyContent: 'center', marginBottom: '10px'}}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              setShowConfirmBox(false);
+              router.push(`/create`);
+            }}
+            style={{borderRadius: '50px', width: '40%'}}
+            color="primary">
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            style={{
+              color: '#fff',
+              borderRadius: '50px',
+              width: '40%',
+              marginLeft: '30px',
+            }}
+            onClick={async () => {
+              const saveResponse = await handleProjectSave();
+              if (saveResponse) {
+                setShowConfirmBox(false);
                 router.push(`/create`);
-              }}
-              style={{borderRadius: '50px', width: '40%'}}
-              color="primary">
-              Cancel
-            </Button>
-            <Button
-              variant="contained"
-              style={{color: '#fff', borderRadius: '50px', width: '40%',marginLeft:"30px"}}
-              onClick={async () => {
-                const saveResponse = await handleProjectSave();
-                if (saveResponse) {
-                  setShowConfirmBox(false);
-                  router.push(`/create`);
-                } else {
-                  setShowConfirmBox(false);
-                }
-              }}
-              color="primary"
-              autoFocus>
-              Save
-            </Button>
-          </DialogActions>
-        </Box>
-      </Dialog>
-    )
-}
+              } else {
+                setShowConfirmBox(false);
+              }
+            }}
+            color="primary"
+            autoFocus>
+            Save
+          </Button>
+        </DialogActions>
+      </Box>
+    </Dialog>
+  );
+};
 
 export default ExitConfirmationModal;

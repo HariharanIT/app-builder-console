@@ -4,7 +4,6 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 
-
 const useHadStyles = makeStyles(() =>
   createStyles({
     banerGrid: {
@@ -51,39 +50,36 @@ const useHadStyles = makeStyles(() =>
   }),
 );
 
-
-const  ProjectBanner  = () => {
-    const HadClasses = useHadStyles();
-
-    return (
-        <Grid
-        container
-        style={{
-          backgroundImage: "url('./console-background.jpg')",
-          backgroundSize: 'contain',
-        }}
-        className={HadClasses.banerGrid}>
-        <Grid sm={6} xs={12} item={true} style={{height: '100%'}}>
-          <Box
-            className={HadClasses.LeftGrid}
-            width="100%"
-            height="100%"
-            px={35}
-            fontSize={32}
-            display="grid"
-            alignItems="center">
-            <Typography variant="body1" className={HadClasses.LeftGridText}>
-              {' '}
-              The fastest way to personalize and publish real-time engagement
-              apps
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid sm={6} xs={12} className={HadClasses.RightGrid} item={true}>
-          <img className={HadClasses.backGround} src="./herobanner.png" />
-        </Grid>
+const ProjectBanner = () => {
+  const HadClasses = useHadStyles();
+  return (
+    <Grid
+      container
+      style={{
+        backgroundImage: "url('./console-background.jpg')",
+        backgroundSize: 'contain',
+      }}
+      className={HadClasses.banerGrid}>
+      <Grid sm={6} xs={12} item={true} style={{height: '100%'}}>
+        <Box
+          className={HadClasses.LeftGrid}
+          width="100%"
+          height="100%"
+          px={35}
+          fontSize={32}
+          display="grid"
+          alignItems="center">
+          <Typography variant="body1" className={HadClasses.LeftGridText}>
+            {' '}
+            The fastest way to personalize and publish real-time engagement apps
+          </Typography>
+        </Box>
       </Grid>
-    )
-}
+      <Grid sm={6} xs={12} className={HadClasses.RightGrid} item={true}>
+        <img className={HadClasses.backGround} src="./herobanner.png" />
+      </Grid>
+    </Grid>
+  );
+};
 
 export default ProjectBanner;
