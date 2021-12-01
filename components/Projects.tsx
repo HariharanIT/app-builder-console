@@ -152,7 +152,7 @@ const ProjectCard = ({
 }: IProject) => {
   const router = useRouter();
   const CardClasses = useCardStyles();
-  const backgrondLogoUrl = getImageUrl(primary_background_logo);
+  const backgroundLogoUrl = getImageUrl(primary_background_logo);
   const primaryLogoUrl = getImageUrl(primary_logo);
   return (
     <Grid className={CardClasses.CardGrid}>
@@ -168,7 +168,7 @@ const ProjectCard = ({
         }}>
         <Card style={{margin: '15px'}}>
           <LivePreviewSVG
-            backgrondLogoUrl={backgrondLogoUrl}
+            backgroundLogoUrl={backgroundLogoUrl}
             primaryLogoUrl={primaryLogoUrl}
             primary_font_color={primary_font_color}
             landing_sub_heading={landing_sub_heading}

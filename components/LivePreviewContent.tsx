@@ -8,7 +8,7 @@ import Videocall from './Videocall';
 import VideocallMobile from './VideocallMobile';
 
 export const LivePreviewSVG = ({
-  backgrondLogoUrl,
+  backgroundLogoUrl,
   primaryLogoUrl,
   primary_font_color,
   landing_sub_heading,
@@ -16,7 +16,7 @@ export const LivePreviewSVG = ({
   product_name,
   isLivePreview,
 }: {
-  backgrondLogoUrl: File | null | string;
+  backgroundLogoUrl: File | null | string;
   primaryLogoUrl: File | null | string;
   primary_font_color: string;
   landing_sub_heading: string;
@@ -54,20 +54,20 @@ export const LivePreviewSVG = ({
             filterUnits="userSpaceOnUse">
             <feOffset dy="3" input="SourceAlpha" />
             <feGaussianBlur stdDeviation="43" result="blur" />
-            <feFlood flood-opacity="0.161" />
+            <feFlood floodOpacity="0.161" />
             <feComposite operator="in" in2="blur" />
             <feComposite in="SourceGraphic" />
           </filter>
           <pattern
-            id="pattern"
+            id={`${product_name}-1`}
             preserveAspectRatio="none"
             width="100%"
             height="100%"
             viewBox="0 0 1136 730">
-            <image width="1136" height="730" xlinkHref={backgrondLogoUrl} />
+            <image width="1136" height="730" xlinkHref={backgroundLogoUrl} />
           </pattern>
           <pattern
-            id="pattern-2"
+            id={`${product_name}-2`}
             preserveAspectRatio="none"
             width="100%"
             height="100%"
@@ -79,7 +79,7 @@ export const LivePreviewSVG = ({
           id="Group_501"
           data-name="Group 501"
           transform="translate(66 86)"
-          fill={backgrondLogoUrl === './transparent.png' ? '#fff' : ''}>
+          fill={backgroundLogoUrl === './transparent.png' ? '#fff' : ''}>
           <g
             transform="matrix(1, 0, 0, 1, -66, -86)"
             filter="url(#Rectangle_288)">
@@ -99,25 +99,25 @@ export const LivePreviewSVG = ({
               height="730"
               rx="10"
               transform="translate(63 40)"
-              fill="url(#pattern)"
+              fill={`url(#${product_name}-1)`}
             />
             <rect
               id="Agora-new-logo-rgb"
               width="82"
               height="28"
               transform="translate(590 133)"
-              fill="url(#pattern-2)"
+              fill={`url(#${product_name}-2)`}
             />
             <text
               id="Together_Business"
               data-name="Together Business"
               transform="translate(631 252)"
-              dominant-baseline="middle"
-              text-anchor="middle"
+              dominantBaseline="middle"
+              textAnchor="middle"
               fill={primary_font_color}
-              font-size="25"
-              font-family="Roboto-Bold, Roboto"
-              font-weight="700">
+              fontSize="25"
+              fontFamily="Roboto-Bold, Roboto"
+              fontWeight="700">
               {product_name}
             </text>
             <text
@@ -125,11 +125,11 @@ export const LivePreviewSVG = ({
               data-name="Where business happens online, on time, each time."
               transform="translate(631 288)"
               fill={primary_font_color}
-              font-size="17"
-              font-family="Roboto-Medium, Roboto"
-              font-weight="500"
-              dominant-baseline="middle"
-              text-anchor="middle">
+              fontSize="17"
+              fontFamily="Roboto-Medium, Roboto"
+              fontWeight="500"
+              dominantBaseline="middle"
+              textAnchor="middle">
               {landing_sub_heading}
             </text>
             <g
@@ -150,9 +150,9 @@ export const LivePreviewSVG = ({
                 data-name="Create Meeting"
                 transform="translate(187 26.39)"
                 fill="#fff"
-                font-size="14"
-                font-family="Roboto-Medium, Roboto"
-                font-weight="500">
+                fontSize="14"
+                fontFamily="Roboto-Medium, Roboto"
+                fontWeight="500">
                 <tspan x="-48.019" y="0">
                   Create Meeting
                 </tspan>
@@ -164,11 +164,11 @@ export const LivePreviewSVG = ({
               transform="translate(434 605.777)">
               <g
                 id="Rectangle_280"
-                fill-opacity="0"
+                fillOpacity="0"
                 data-name="Rectangle 280"
                 transform="translate(0 0.223)"
                 stroke={primary_color}
-                stroke-width="1">
+                strokeWidth="1">
                 <rect width="394" height="45" rx="22.5" stroke="none" />
                 <rect
                   x="0.5"
@@ -184,9 +184,9 @@ export const LivePreviewSVG = ({
                 data-name="Meeting ID or URL"
                 transform="translate(183 26.223)"
                 fill={primary_color}
-                font-size="14"
-                font-family="Roboto-Medium, Roboto"
-                font-weight="500">
+                fontSize="14"
+                fontFamily="Roboto-Medium, Roboto"
+                fontWeight="500">
                 <tspan x="-56.561" y="0">
                   Meeting ID or URL
                 </tspan>
@@ -201,8 +201,8 @@ export const LivePreviewSVG = ({
                 data-name="Use PSTN (Join by dialing a number)"
                 transform="translate(407 489)"
                 fill={primary_font_color}
-                font-size="13"
-                font-family="Roboto-Regular, Roboto">
+                fontSize="13"
+                fontFamily="Roboto-Regular, Roboto">
                 <tspan x="0" y="0">
                   Use PSTN (Join by dialing a number)
                 </tspan>
@@ -213,30 +213,30 @@ export const LivePreviewSVG = ({
                   data-name="Restrict Host Controls (Separate host link)"
                   transform="translate(407 458)"
                   fill={primary_font_color}
-                  font-size="13"
-                  font-family="Roboto-Regular, Roboto">
+                  fontSize="13"
+                  fontFamily="Roboto-Regular, Roboto">
                   <tspan x="0" y="0">
                     Restrict Host Controls (Separate host link)
                   </tspan>
                 </text>
                 <g
                   id="Rectangle_281"
-                  fill-opacity="0"
+                  fillOpacity="0"
                   data-name="Rectangle 281"
                   transform="translate(379 444)"
                   stroke="#b9b2b2"
-                  stroke-width="2">
+                  strokeWidth="2">
                   <rect width="20" height="20" rx="6" stroke="none" />
                   <rect x="1" y="1" width="18" height="18" rx="5" fill="none" />
                 </g>
               </g>
               <g
                 id="Rectangle_284"
-                fill-opacity="0"
+                fillOpacity="0"
                 data-name="Rectangle 284"
                 transform="translate(379 476)"
                 stroke="#b9b2b2"
-                stroke-width="2">
+                strokeWidth="2">
                 <rect width="20" height="19" rx="6" stroke="none" />
                 <rect x="1" y="1" width="18" height="17" rx="5" fill="none" />
               </g>
@@ -285,12 +285,12 @@ export const LivePreviewSVG = ({
                 transform="translate(0 0.224)">
                 <g
                   id="Rectangle_278"
-                  fill-opacity="0"
+                  fillOpacity="0"
                   data-name="Rectangle 278"
                   transform="translate(0 0)"
                   fill="#fff"
                   stroke={primary_color}
-                  stroke-width="1">
+                  strokeWidth="1">
                   <rect width="395" height="44" rx="22" stroke="none" />
                   <rect
                     x="0.5"
@@ -306,9 +306,9 @@ export const LivePreviewSVG = ({
                 id="AcmeMeeting"
                 fill={primary_font_color}
                 transform="translate(188 26.224)"
-                font-size="14"
-                font-family="Roboto-Medium, Roboto"
-                font-weight="500">
+                fontSize="14"
+                fontFamily="Roboto-Medium, Roboto"
+                fontWeight="500">
                 <tspan x="-43.788" y="0">
                   acme meeting
                 </tspan>
@@ -321,7 +321,7 @@ export const LivePreviewSVG = ({
               transform="translate(526.5 564.5)"
               fill="none"
               stroke={primary_color}
-              stroke-width="1"
+              strokeWidth="1"
               opacity="0.499"
             />
           </g>
@@ -350,14 +350,14 @@ const LivePreviewContentDesktop = () => {
 
   const {productInfo} = useProductInfo();
 
-  const backgrondLogoUrl = getImageUrl(productInfo.primary_background_logo);
+  const backgroundLogoUrl = getImageUrl(productInfo.primary_background_logo);
   const primaryLogoUrl = getImageUrl(productInfo.primary_logo);
   return (
     <TabPanel value={livePreviewDisplayType} index={0}>
       {[1, 3, 4, 6].map((e) => (
         <TabPanel padding={0} value={selectedTabValue} index={e} key={e}>
           <LivePreviewSVG
-            backgrondLogoUrl={backgrondLogoUrl}
+            backgroundLogoUrl={backgroundLogoUrl}
             primaryLogoUrl={primaryLogoUrl}
             primary_font_color={productInfo.primary_font_color}
             landing_sub_heading={productInfo.landing_sub_heading}
@@ -398,7 +398,7 @@ const LivePreviewContentMobile = () => {
 
   const {productInfo} = useProductInfo();
 
-  const backgrondLogoUrl = getImageUrl(productInfo.primary_background_logo);
+  const backgroundLogoUrl = getImageUrl(productInfo.primary_background_logo);
   const primaryLogoUrl = getImageUrl(productInfo.primary_logo);
 
   return (
@@ -429,7 +429,7 @@ const LivePreviewContentMobile = () => {
                   filterUnits="userSpaceOnUse">
                   <feOffset input="SourceAlpha" />
                   <feGaussianBlur stdDeviation="49.5" result="blur" />
-                  <feFlood flood-opacity="0.161" />
+                  <feFlood floodOpacity="0.161" />
                   <feComposite operator="in" in2="blur" />
                   <feComposite in="SourceGraphic" />
                 </filter>
@@ -441,7 +441,7 @@ const LivePreviewContentMobile = () => {
                     transform="translate(-1.02 -0.765)"
                     fill="#fff"
                     stroke="#707070"
-                    stroke-width="0.2"
+                    strokeWidth="0.2"
                   />
                 </clipPath>
                 <pattern
@@ -453,7 +453,7 @@ const LivePreviewContentMobile = () => {
                   <image
                     width="1136"
                     height="730"
-                    xlinkHref={backgrondLogoUrl}
+                    xlinkHref={backgroundLogoUrl}
                   />
                 </pattern>
                 <pattern
@@ -499,7 +499,7 @@ const LivePreviewContentMobile = () => {
                         transform="translate(-0.255)"
                         fill="#fff"
                         stroke="#707070"
-                        stroke-width="0.1"
+                        strokeWidth="0.1"
                         fill-rule="evenodd"
                       />
                       <path
@@ -509,7 +509,7 @@ const LivePreviewContentMobile = () => {
                         transform="translate(0 -4.587)"
                         fill="#fff"
                         stroke="#707070"
-                        stroke-width="0.1"
+                        strokeWidth="0.1"
                       />
                       <path
                         id="Path_584"
@@ -518,7 +518,7 @@ const LivePreviewContentMobile = () => {
                         transform="translate(0 -7.136)"
                         fill="#fff"
                         stroke="#707070"
-                        stroke-width="0.1"
+                        strokeWidth="0.1"
                         fill-rule="evenodd"
                       />
                       <path
@@ -528,7 +528,7 @@ const LivePreviewContentMobile = () => {
                         transform="translate(0 -10.194)"
                         fill="#fff"
                         stroke="#707070"
-                        stroke-width="0.1"
+                        strokeWidth="0.1"
                       />
                       <path
                         id="Path_586"
@@ -537,7 +537,7 @@ const LivePreviewContentMobile = () => {
                         transform="translate(-19.164 -7.951)"
                         fill="#fff"
                         stroke="#707070"
-                        stroke-width="0.1"
+                        strokeWidth="0.1"
                         fill-rule="evenodd"
                       />
                       <circle
@@ -558,7 +558,7 @@ const LivePreviewContentMobile = () => {
                         transform="translate(189.71 49.438)"
                         fill="#fff"
                         stroke="#707070"
-                        stroke-width="0.1"
+                        strokeWidth="0.1"
                       />
                       <path
                         id="Path_587"
@@ -567,7 +567,7 @@ const LivePreviewContentMobile = () => {
                         transform="translate(-9.174 -1.376)"
                         fill="#fff"
                         stroke="#707070"
-                        stroke-width="0.1"
+                        strokeWidth="0.1"
                         fill-rule="evenodd"
                       />
                       <g
@@ -578,7 +578,7 @@ const LivePreviewContentMobile = () => {
                           id="temp"
                           transform="translate(-354.368 11.142)"
                           stroke="#707070"
-                          stroke-width="0.2"
+                          strokeWidth="0.2"
                           fill="url(#pattern)">
                           <rect
                             width="1136"
@@ -614,11 +614,11 @@ const LivePreviewContentMobile = () => {
                       data-name="Together Business"
                       transform="translate(570 255)"
                       fill={productInfo.primary_font_color}
-                      font-size="23"
-                      font-family="Roboto-Bold, Roboto"
-                      font-weight="700"
-                      dominant-baseline="middle"
-                      text-anchor="middle">
+                      fontSize="23"
+                      fontFamily="Roboto-Bold, Roboto"
+                      fontWeight="700"
+                      dominantBaseline="middle"
+                      textAnchor="middle">
                       ${productInfo.product_name}
                     </text>
                     <foreignObject
@@ -650,9 +650,9 @@ const LivePreviewContentMobile = () => {
                         data-name="Create Meeting"
                         transform="translate(141.314 22)"
                         fill="#fff"
-                        font-size="12"
-                        font-family="Roboto-Medium, Roboto"
-                        font-weight="500">
+                        fontSize="12"
+                        fontFamily="Roboto-Medium, Roboto"
+                        fontWeight="500">
                         <tspan x="-41.159" y="0">
                           Create Meeting
                         </tspan>
@@ -664,11 +664,11 @@ const LivePreviewContentMobile = () => {
                       transform="translate(430.686 527)">
                       <g
                         id="Rectangle_280"
-                        fill-opacity="0"
+                        fillOpacity="0"
                         data-name="Rectangle 280"
                         transform="translate(0.314 0)"
                         stroke={productInfo.primary_color}
-                        stroke-width="0.5">
+                        strokeWidth="0.5">
                         <rect width="287" height="35" rx="17.5" stroke="none" />
                         <rect
                           x="0.25"
@@ -684,9 +684,9 @@ const LivePreviewContentMobile = () => {
                         data-name="Meeting ID or URL"
                         transform="translate(138.314 22)"
                         fill={productInfo.primary_color}
-                        font-size="12"
-                        font-family="Roboto-Medium, Roboto"
-                        font-weight="500">
+                        fontSize="12"
+                        fontFamily="Roboto-Medium, Roboto"
+                        fontWeight="500">
                         <tspan x="-48.48" y="0">
                           Meeting ID or URL
                         </tspan>
@@ -701,8 +701,8 @@ const LivePreviewContentMobile = () => {
                         data-name="Use PSTN (Join by dialing a number)"
                         transform="translate(21.462 33)"
                         fill={productInfo.primary_font_color}
-                        font-size="9"
-                        font-family="Roboto-Regular, Roboto">
+                        fontSize="9"
+                        fontFamily="Roboto-Regular, Roboto">
                         <tspan x="0" y="0">
                           Use PSTN (Join by dialing a number)
                         </tspan>
@@ -716,19 +716,19 @@ const LivePreviewContentMobile = () => {
                           data-name="Restrict Host Controls (Separate host link)"
                           transform="translate(21.462 9)"
                           fill={productInfo.primary_font_color}
-                          font-size="9"
-                          font-family="Roboto-Regular, Roboto">
+                          fontSize="9"
+                          fontFamily="Roboto-Regular, Roboto">
                           <tspan x="0" y="0">
                             Restrict Host Controls (Separate host link)
                           </tspan>
                         </text>
                         <g
                           id="Rectangle_281"
-                          fill-opacity="0"
+                          fillOpacity="0"
                           data-name="Rectangle 281"
                           transform="translate(0.462 -2)"
                           stroke="#b9b2b2"
-                          stroke-width="1">
+                          strokeWidth="1">
                           <rect width="15" height="15" rx="6" stroke="none" />
                           <rect
                             x="0.5"
@@ -742,11 +742,11 @@ const LivePreviewContentMobile = () => {
                       </g>
                       <g
                         id="Rectangle_284"
-                        fill-opacity="0"
+                        fillOpacity="0"
                         data-name="Rectangle 284"
                         transform="translate(0.462 22)"
                         stroke="#b9b2b2"
-                        stroke-width="1">
+                        strokeWidth="1">
                         <rect width="15" height="15" rx="6" stroke="none" />
                         <rect
                           x="0.5"
@@ -764,7 +764,7 @@ const LivePreviewContentMobile = () => {
                       transform="translate(430.686 318)">
                       <g
                         id="Component_2_5"
-                        fill-opacity="0"
+                        fillOpacity="0"
                         data-name="Component 2 – 5"
                         transform="translate(0.314 0)">
                         <g
@@ -772,7 +772,7 @@ const LivePreviewContentMobile = () => {
                           data-name="Rectangle 278"
                           transform="translate(0 0)"
                           stroke={productInfo.primary_color}
-                          stroke-width="0.5">
+                          strokeWidth="0.5">
                           <rect width="288" height="36" rx="18" stroke="none" />
                           <rect
                             x="0.25"
@@ -789,11 +789,11 @@ const LivePreviewContentMobile = () => {
                         data-name="Create Meeting"
                         transform="translate(141.314 20)"
                         fill={productInfo.primary_font_color}
-                        font-size="12"
-                        font-family="Roboto-Medium, Roboto"
-                        font-weight="500"
-                        dominant-baseline="middle"
-                        text-anchor="middle">
+                        fontSize="12"
+                        fontFamily="Roboto-Medium, Roboto"
+                        fontWeight="500"
+                        dominantBaseline="middle"
+                        textAnchor="middle">
                         ACME Meeting
                       </text>
                     </g>

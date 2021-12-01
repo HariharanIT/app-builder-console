@@ -88,7 +88,6 @@ const Deploy = (props: Deploy) => {
   React.useEffect(() => {
     window.onmessage = function (e: any) {
       const {data} = e;
-      console.log({data}, 'heroku vercel token');
       // this post message {herokuOAuth: true} quarantees that heroku is authenticated
       if (data && data.herokuOAuth) {
         console.log('*heroku authenticated*');

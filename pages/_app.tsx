@@ -15,7 +15,7 @@ import withGA from 'next-ga';
 import {MDXProvider} from '@mdx-js/react';
 import {Snackbar, Backdrop, CircularProgress} from '@material-ui/core';
 import components from '../MDXComponents';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import ApiStatusContext from '../components/APIContext';
 import '../styles.css';
 

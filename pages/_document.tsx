@@ -2,7 +2,6 @@ import React from 'react';
 import Document, {Html, Head, Main, NextScript} from 'next/document';
 import {ServerStyleSheets} from '@material-ui/core/styles';
 import theme from '../components/theme';
-
 export default class MyDocument extends Document {
   render() {
     return (
@@ -18,7 +17,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
-          <link rel="stylesheet" href="https://use.typekit.net/uzx7ohw.css"/>
+          <link rel="stylesheet" href="https://use.typekit.net/uzx7ohw.css" />
         </Head>
         <body>
           <Main />
