@@ -4,7 +4,6 @@ import {
   Grid,
   makeStyles,
   createStyles,
-  Theme,
   Link,
   Toolbar,
 } from '@material-ui/core';
@@ -21,97 +20,26 @@ import {DeployContextProvider} from '../components/DeployContext';
 
 export type FormState = IProductInfoDefaultObj;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
-    label: {
-      marginLeft: theme.spacing(1.5),
-      marginBottom: '5px',
-    },
     root: {
       flexGrow: 1,
       height: '100vh',
       width: '100vw',
-    },
-    paper: {
-      minHeight: '60vh',
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      borderColor: '#099DFD10',
-      boxShadow: '-1px 4px 19px 0px rgba(26, 134, 192, 0.16)',
-    },
-
-    logo: {
-      width: 120,
-      height: 41,
-      marginRight: 16,
-      marginTop: 8,
-      marginLeft: 32,
     },
     row: {
       display: 'flex',
       flexDirection: 'row',
       textDecoration: 'none',
     },
-    checkbox: {
-      flex: 1,
-      display: 'flex',
-      margin: theme.spacing(1),
-    },
-    textField: {
-      flex: 1,
-      display: 'flex',
-      margin: theme.spacing(1.5),
-      borderColor: '#099DFD80',
-    },
-
-    alignCenter: {
-      marginTop: 10,
-      marginBottom: 4,
-      alignSelf: 'center',
-      justifySelf: 'center',
-      textAlign: 'center',
-    },
-    Logo: {
-      height: '25px',
-      marginRight: 'auto',
-    },
     AppBar: {
       paddingLeft: '30px',
       paddingRight: '30px',
       maxHeight: '64px',
     },
-    Avatar: {
-      width: '30px',
-      height: '30px',
-      background: '#DEE5EF',
-    },
-    primarybutton: {
-      borderRadius: '50px',
-      color: '#fff',
-      ['@media (max-width:1028px)']: {
-        fontSize: '12px',
-      },
-    },
     navbarContainer: {
       boxShadow: '0px 2px 10px rgba(144, 158, 169, 0.15)',
       Height: '70px',
-    },
-    sectionDesktop: {
-      display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
-    },
-    sectionMobile: {
-      display: 'flex',
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
-    },
-    popupMenu: {
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
     },
   }),
 );
