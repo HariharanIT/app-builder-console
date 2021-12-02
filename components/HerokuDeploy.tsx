@@ -59,6 +59,7 @@ const HerokuDeploy = () => {
         });
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (herokuPublishData) {
@@ -75,6 +76,7 @@ const HerokuDeploy = () => {
       }
       return () => clearInterval(timer.current);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [herokuPublishData]);
   useEffect(() => {
     if (herokuPollingData) {
@@ -88,9 +90,9 @@ const HerokuDeploy = () => {
       }
       setHerokuStatus(heroku.status);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [herokuPollingData]);
 
-  console.log({herokuStatus});
   return (
     <Card
       className={classes.CardContainer}

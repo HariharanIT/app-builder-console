@@ -86,7 +86,7 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
       setLoading(false);
       router.push(`/builder?id=${createProject.id}`);
     }
-  }, [data, setLoading]);
+  }, [data, setLoading, router]);
   const handleCreateNewProject = () => {
     if (projectName === '') {
       setValidation(true);

@@ -66,15 +66,14 @@ const Navbar = () => {
     if (error) {
       setAPIError(error.message);
     }
-  }, [loading, error]);
+  }, [loading, error, setLoading, setAPIError]);
 
   React.useEffect(() => {
     if (data) {
       const email = data.user ? data.user.email : '';
       setEmail(email);
     }
-  }, [data]);
-  console.log({email: email.split('@')[0]});
+  }, [data, setEmail]);
   return (
     <Box position="static">
       <Toolbar className={NavbarClasses.AppBar}>

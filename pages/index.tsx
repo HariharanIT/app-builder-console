@@ -387,7 +387,7 @@ function Home() {
   const open = Boolean(anchorEl);
   const FeatureRef: any = React.useRef();
   React.useEffect(() => {
-    if (!localStorage.getItem('cookies')) {
+    if (!window.localStorage.getItem('cookies')) {
       setCookies(true);
     }
     window.addEventListener('scroll', handleScroll);
@@ -1564,7 +1564,7 @@ function Home() {
                 textTransform: 'unset',
               }}
               onClick={() => {
-                localStorage.setItem('cookies', 'true');
+                window.localStorage.setItem('cookies', 'true');
                 setCookies(false);
               }}
               color="primary"

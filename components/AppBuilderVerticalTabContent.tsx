@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Typography} from '@material-ui/core';
-import { useSideNavStyles } from './AppBuilderCustomizeTabs';
+import {Box, Typography} from '@material-ui/core';
+import {useSideNavStyles} from './AppBuilderCustomizeTabs';
 import ProductInfo from '../components/ProductInfo';
 import ColorFont from '../components/ColorFont';
 import JoinScreen from '../components/JoinScreen';

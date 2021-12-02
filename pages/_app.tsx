@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import {AppProps} from 'next/app';
-import {ThemeProvider, makeStyles} from '@material-ui/core/styles';
+import {ThemeProvider, makeStyles, Theme} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {ApolloProvider} from '@apollo/client';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -23,7 +23,7 @@ function Alert(props: any) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const useBackDropStyles = makeStyles((theme) => ({
+const useBackDropStyles = makeStyles((theme: Theme) => ({
   backdrop: {
     zIndex: theme.zIndex.modal + 1,
     color: '#099DFD',

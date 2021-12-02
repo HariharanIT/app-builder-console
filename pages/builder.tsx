@@ -1,6 +1,4 @@
-// @ts-nocheck
 import React, {useContext} from 'react';
-import {useRouter} from 'next/router';
 import {
   Box,
   Grid,
@@ -10,22 +8,16 @@ import {
   Link,
   Toolbar,
 } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
+// import MuiAlert from '@material-ui/lab/Alert';
 import Deploy from '../components/DeployDilog';
 import AppBuilderControls from '../components/AppBuilderControls';
 import LivePreview from '../components/LivePreview';
-import {
-  productInfoDefaultErrorObj,
-  IProductInfoDefaultObj,
-} from '../constants/productInfoDefaults';
+import {IProductInfoDefaultObj} from '../constants/productInfoDefaults';
 import {ProductInfoProvider} from '../components/ProductInfoContext';
 import AppBuilderCustomizeTabs from '../components/AppBuilderCustomizeTabs';
 import {VerticalTabProvider} from '../components/VerticalTabContext';
 import ApiStatusContext from '../components/APIContext';
 import {DeployContextProvider} from '../components/DeployContext';
-
-let vertical: any = 'top';
-let horizontal: any = 'center';
 
 export type FormState = IProductInfoDefaultObj;
 
@@ -124,100 +116,28 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const useContentStyles = makeStyles(() =>
-  createStyles({
-    NavContainer: {
-      height: 'calc(100vh - 70px)',
-      overflow: 'hidden',
-      // '&::-webkit-scrollbar': {
-      //   width: '0em'
-      // },
-      maxWidth: 'calc(100% - 280px)',
-      flexBasis: 'calc(100% - 280px)',
-      ['@media screen and (max-width: 900px) and (min-width: 550px)']: {
-        maxWidth: 'calc(100% - 210px)',
-        flexBasis: 'calc(100% - 210px)',
-      },
-      ['@media (max-width:550px)']: {
-        display: 'none',
-      },
-    },
-    topNav: {
-      display: 'flex',
-      alignItems: 'center',
-      paddingTop: '40px',
-      paddingLeft: '60px',
-      paddingRight: '60px',
-      flexWrap: 'wrap',
-      ['@media screen and (max-width: 900px) and (min-width: 550px)']: {
-        zoom: '0.8',
-      },
-    },
-
-    mainHading: {
-      fontWeight: 'bold',
-      fontSize: '26px',
-      color: '#000000',
-    },
-    lable: {
-      background: 'rgba(10, 157, 252, 0.1)',
-      borderRadius: '50px',
-      marginLeft: '10px',
-      marginRight: 'auto',
-    },
-    lableText: {
-      fontWeight: 'bold',
-      fontSize: '16px',
-      color: '#099CFC',
-      margin: '3px 11px',
-    },
-  }),
-);
 export type LogoType = string;
 export type LogoStateType = File | null;
 export interface LogoHandleInterface {}
-function Alert(props: any) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-function beforeUnloadListener(event: any) {
-  event.preventDefault();
-  return (event.returnValue = "Are you sure you want to close?'");
-}
+
+// function Alert(props: any) {
+//   return <MuiAlert elevation={6} variant="filled" {...props} />;
+// }
+// function beforeUnloadListener(event: any) {
+//   event.preventDefault();
+//   return (event.returnValue = "Are you sure you want to close?'");
+// }
 export default function Index() {
-  const router = useRouter();
-  const {id = ''} = router.query;
-  const {
-    apiLoading: loading,
-    setLoading,
-    setAPIError,
-  } = useContext(ApiStatusContext);
+  const {apiLoading: loading} = useContext(ApiStatusContext);
 
   const classes = useStyles();
   const [isDeployModal, setDeployModal] = React.useState<boolean>(false);
-  const ContentClasses = useContentStyles();
-  const [firstRanderSave, setFirstRenderSave] = React.useState<boolean>(true);
-  const [allowedDeploy, setAllowedDeploy] = React.useState<boolean>(false);
-  const [showConfirmBox, setShowConfirmBox] = React.useState<boolean>(false);
-  const [saveBtn, setSaveBtn] = React.useState<String>('save');
-  const [validationError, setValidationError] = React.useState<boolean>(false);
-  const [productInfoErr, setProductInfoErr] = React.useState<boolean>(false);
-  const [joinScrErr, setJoinScrErr] = React.useState<boolean>(false);
-  const [conferenceErr, setConferenceErr] = React.useState<boolean>(false);
-  const [disableDeploy, setDisableDeploy] = React.useState<boolean>(false);
-  const [herokuUploadStatus, setHerokuUploadStatus] =
-    React.useState<String>('');
-  const [vercelUploadState, setVercelUploadState] = React.useState<String>('');
-  const [onSaveValidation, setOnSaveValidation] =
-    React.useState<boolean | string>(false);
-  const [errorHandler, setErrorHandler] = React.useState<any>(
-    productInfoDefaultErrorObj,
-  );
-  let timer: any = '';
-  const handleChangesSaveStatusPending = () => {
-    setSaveBtn('save');
-    addEventListener('beforeunload', beforeUnloadListener, {capture: true});
-    setFirstRenderSave(false);
-  };
+  const [allowedDeploy] = React.useState<boolean>(false);
+  // const handleChangesSaveStatusPending = () => {
+  //   setSaveBtn('save');
+  //   addEventListener('beforeunload', beforeUnloadListener, {capture: true});
+  //   setFirstRenderSave(false);
+  // };
   const openDeployModal = () => {
     setDeployModal(true);
   };

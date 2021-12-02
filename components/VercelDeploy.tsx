@@ -68,6 +68,7 @@ const VercelDeploy = () => {
         });
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (vercelPublishData) {
@@ -84,6 +85,7 @@ const VercelDeploy = () => {
       }
       return () => clearInterval(timerVercel.current);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vercelPublishData]);
   useEffect(() => {
     if (vercelPollingData) {
@@ -97,6 +99,7 @@ const VercelDeploy = () => {
       }
       setVercelStatus(vercel.status);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vercelPollingData]);
 
   return (
@@ -168,7 +171,7 @@ const VercelDeploy = () => {
                 className={classes.primaryButton}
                 onClick={() => {
                   // const token: string = csrfToken();
-                  localStorage.setItem('deployType', 'frontend');
+                  window.localStorage.setItem('deployType', 'frontend');
                   window.open(
                     `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
                     'myWindow',
@@ -207,7 +210,7 @@ const VercelDeploy = () => {
                   className={classes.primaryButton}
                   onClick={() => {
                     // const token: string = csrfToken();
-                    localStorage.setItem('deployType', 'frontend');
+                    window.localStorage.setItem('deployType', 'frontend');
                     window.open(
                       `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
                       'myWindow',
@@ -227,7 +230,7 @@ const VercelDeploy = () => {
                   className={classes.primaryButton}
                   onClick={() => {
                     // const token: string = csrfToken();
-                    localStorage.setItem('deployType', 'frontend');
+                    window.localStorage.setItem('deployType', 'frontend');
                     window.open(
                       `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
                       'myWindow',

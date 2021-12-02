@@ -19,7 +19,7 @@ const Redirect = () => {
       setToken(token as string);
       router.push('/create');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
   return null;
 };

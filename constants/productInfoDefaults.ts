@@ -109,8 +109,8 @@ export const productInfoDefaultObj: IProductInfoDefaultObj = {
   pstn_account: '',
   scheme: '',
   video_profile: '',
-  backend_deploy_status: '',
-  frontend_deploy_status: '',
+  backend_deploy_status: DeployStatus.NONE,
+  frontend_deploy_status: DeployStatus.NONE,
   // missing properies
   heading: 'Acme',
 };

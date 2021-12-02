@@ -358,7 +358,7 @@ const AppBuilderCustomizeTabs = () => {
       setLoading(false);
       setAPIError(error.message);
     }
-  }, [loading, error]);
+  }, [loading, error, setLoading, setAPIError]);
 
   useEffect(() => {
     if (data) {
@@ -366,7 +366,7 @@ const AppBuilderCustomizeTabs = () => {
       productInfoUpdateComplete(productInfoDispatch, {...projects[0]});
       setLoading(false);
     }
-  }, [data]);
+  }, [data, setLoading, productInfoDispatch]);
 
   const handleTabChange = (_event: React.ChangeEvent<{}>, newValue: number) => {
     setDisplayTab(false);
