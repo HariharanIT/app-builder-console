@@ -2,6 +2,12 @@ enum ProjectPreset {
   MEETING = 'MEETING',
   EVENTS = 'EVENTS',
 }
+export enum DeployStatus {
+  SUCCESS = 'SUCCESS',
+  PENDING = 'PENDING',
+  FAILURE = 'FAILURE',
+  NONE = 'NONE',
+}
 export interface IProductInfoDefaultObj {
   id: string;
   product_id: string;
@@ -51,6 +57,8 @@ export interface IProductInfoDefaultObj {
   scheme: string;
   video_profile: string;
   heading: string;
+  backend_deploy_status: DeployStatus;
+  frontend_deploy_status: DeployStatus;
 }
 
 export const productInfoDefaultObj: IProductInfoDefaultObj = {
@@ -101,6 +109,8 @@ export const productInfoDefaultObj: IProductInfoDefaultObj = {
   pstn_account: '',
   scheme: '',
   video_profile: '',
+  backend_deploy_status: '',
+  frontend_deploy_status: '',
   // missing properies
   heading: 'Acme',
 };

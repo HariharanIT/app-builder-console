@@ -252,10 +252,6 @@ export default function Index() {
               handleDialogClose={closeDeployModal}
               openDialog={isDeployModal}
               allowedDeploy={allowedDeploy}
-              herokuUploadStatus={herokuUploadStatus}
-              vercelUploadState={vercelUploadState}
-              value={{}}
-              saveBtn={saveBtn}
             />
           </DeployContextProvider>
           {/* <ExitConfirmationModal 

@@ -273,12 +273,6 @@ const Projects = ({
       setAPIError(error.message);
     }
   }, [loading, error, setLoading, setAPIError]);
-  // React.useEffect(() => {
-  //   console.log('skipdataupdated', skipData);
-  //   getProjectList(projectListQuery(skipData));
-  //   return () => console.log('UNMOUNTED');
-  // }, [skipData]);
-
   return (
     <Box mt={30}>
       <ProjectNavigation

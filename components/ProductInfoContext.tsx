@@ -6,29 +6,13 @@ import {
 import {tempErrorObject} from '../Utils/errorUtils';
 import {LogoStateType} from './AppBuilderVerticalTabContent';
 
-// enum ProductInfoActionType {
-//   start update = 'start update',
-// }
 interface ProductInfoContext {
   status: 'pending' | 'inProgress' | 'complete' | 'rejected';
   errors: any;
-  storedProductInfo: IProductInfoDefaultObj;
-  productInfo: IProductInfoDefaultObj;
+  storedProductInfo: IProductInfoDefaultObj; // used to keep track of the backend state of product info
+  productInfo: IProductInfoDefaultObj; // used to keep track of the frontend product info updates
   dispatch: Dispatch<any>;
 }
-// const AuthContext = React.createContext({
-//   user: {username: 'jakiechan', tagline: '', bio: ''},
-// });
-// AuthContext.displayName = 'AuthContext';
-// const AuthProvider = ({user, ...props}) => (
-//   <AuthContext.Provider value={user} {...props} />
-// );
-
-// function useAuth() {
-//   return React.useContext(AuthContext);
-// }
-
-// export {AuthProvider, useAuth};
 
 export const ProductInfoContext = createContext(
   null as unknown as ProductInfoContext,
@@ -50,7 +34,6 @@ function userReducer(state: ProductInfoContext, action: ProductInfoAction) {
         ...state,
         productInfo: {...state.productInfo, ...action.updates},
         status: 'pending',
-        storedProductInfo: state.productInfo,
       };
     }
     case 'finish update': {
@@ -58,7 +41,7 @@ function userReducer(state: ProductInfoContext, action: ProductInfoAction) {
         ...state,
         productInfo: action.updates,
         status: 'complete',
-        storedProductInfo: null,
+        storedProductInfo: action.updates,
       };
     }
     case 'fail update': {
@@ -67,7 +50,6 @@ function userReducer(state: ProductInfoContext, action: ProductInfoAction) {
         status: 'rejected',
         errors: action.error,
         productInfo: state.storedProductInfo,
-        storedProductInfo: null,
       };
     }
     case 'inprogress update': {

@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 import AppBuilderVerticalTabContent from './AppBuilderVerticalTabContent';
-import {useProductInfo, updateProductInfo} from './ProductInfoContext';
+import {useProductInfo, productInfoUpdateComplete} from './ProductInfoContext';
 import {useVerticalTab} from './VerticalTabContext';
 import ApiStatusContext from './APIContext';
 import {useRouter} from 'next/router';
@@ -363,7 +363,7 @@ const AppBuilderCustomizeTabs = () => {
   useEffect(() => {
     if (data) {
       const {projects} = data;
-      updateProductInfo(productInfoDispatch, {...projects[0]});
+      productInfoUpdateComplete(productInfoDispatch, {...projects[0]});
       setLoading(false);
     }
   }, [data]);

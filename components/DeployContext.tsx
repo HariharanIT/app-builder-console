@@ -3,15 +3,11 @@ import {
   useState,
   useContext,
   Dispatch,
+  useEffect,
   SetStateAction,
 } from 'react';
-export enum DeployStatus {
-  SUCCESS = 'SUCCESS',
-  PENDING = 'PENDING',
-  FAILURE = 'FAILURE',
-  NONE = 'NONE',
-}
-
+import {useProductInfo} from './ProductInfoContext';
+import {DeployStatus} from '../constants/productInfoDefaults';
 interface DeployContext {
   herokuStatus: DeployStatus;
   setHerokuStatus: Dispatch<SetStateAction<DeployStatus>>;
@@ -22,13 +18,17 @@ interface DeployContext {
 const DeployContext = createContext(null as unknown as DeployContext);
 
 export function DeployContextProvider({children}: React.PropsWithChildren<{}>) {
-  //   const [APIError, setAPIError] = useState<string>('');
-  const [herokuStatus, setHerokuStatus] = useState<DeployStatus>(
-    DeployStatus.NONE,
-  );
-  const [vercelStatus, setVercelStatus] = useState<DeployStatus>(
-    DeployStatus.NONE,
-  );
+  const {productInfo} = useProductInfo();
+  const [herokuStatus, setHerokuStatus] = useState<DeployStatus>(() => {
+    return productInfo.backend_deploy_status;
+  });
+  const [vercelStatus, setVercelStatus] = useState<DeployStatus>(() => {
+    return productInfo.frontend_deploy_status;
+  });
+  useEffect(() => {
+    setHerokuStatus(productInfo.backend_deploy_status);
+    setVercelStatus(productInfo.frontend_deploy_status);
+  }, [productInfo]);
 
   return (
     <DeployContext.Provider
@@ -45,7 +45,7 @@ export function DeployContextProvider({children}: React.PropsWithChildren<{}>) {
 export function useDeploy() {
   const context = useContext(DeployContext);
   if (context === undefined) {
-    throw new Error(`useApiStatus must be used within a DeployContext`);
+    throw new Error(`useDeploy must be used within a DeployContext`);
   }
   return context;
 }
