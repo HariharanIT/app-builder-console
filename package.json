@@ -32,7 +32,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "test": "jest",
-    "build": "next build",
+    "build": "npm cache clean --force && next build",
     "start": "next start ",
     "lint": "eslint ./components/** ./pages/** -c .eslintrc.js --ext js,jsx",
     "lint-fix": "eslint ./components/** ./pages/** -c .eslintrc.js --fix --ext js,jsx"
