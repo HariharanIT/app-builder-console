@@ -23,6 +23,8 @@ import {
 import {validateBeforeSaving} from '../../Utils/errorUtils';
 import {uploadFile} from '../../config/REST_API';
 import {IProjectBuilderControls} from './AppBuilderControls';
+import Download from '../Download';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     primarybutton: {
@@ -215,11 +217,11 @@ const AppBuilderMobileControls = ({
           </Button>
         </MenuItem>
         <MenuItem>
-          {/* <Download
-              saveBtnState={saveBtnText}
-              configData={configData}
-              saveBtnFn={handleProjectSave}
-            /> */}
+          <Download
+            saveBtnState={status}
+            configData={productInfo}
+            saveBtnFn={handleSaveProject}
+          />
         </MenuItem>
       </Menu>
     </Box>

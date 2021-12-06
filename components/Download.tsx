@@ -359,13 +359,10 @@ export default function Download(props: DownloadProps) {
       disabled={disableDownload}
       onClick={async () => {
         setDisableDownload(() => true);
-        if (props.saveBtnState === 'saved') {
+        if (props.saveBtnState === 'complete') {
           await download();
         } else {
-          const apiResponse = await props.saveBtnFn();
-          if (apiResponse) {
-            await download();
-          }
+          await props.saveBtnFn();
         }
         setDisableDownload(() => false);
       }}
