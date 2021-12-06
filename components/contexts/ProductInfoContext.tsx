@@ -4,7 +4,7 @@ import {
   productInfoDefaultObj,
 } from '../../constants/productInfoDefaults';
 import {tempErrorObject} from '../../Utils/errorUtils';
-import {LogoStateType} from '../Appcontrols/AppBuilderVerticalTabContent';
+import {LogoStateType} from '../buildercontrols/AppBuilderVerticalTabContent';
 
 interface ProductInfoContext {
   status: 'pending' | 'inProgress' | 'complete' | 'rejected';

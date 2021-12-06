@@ -9,11 +9,11 @@ import {
 } from '@material-ui/core';
 // import MuiAlert from '@material-ui/lab/Alert';
 import Deploy from '../components/Appdeploy/DeployDilog';
-import AppBuilderControls from '../components/Appcontrols/AppBuilderControls';
+import AppBuilderControls from '../components/buildercontrols/AppBuilderControls';
 import LivePreview from '../components/Livepreview/LivePreview';
 import {IProductInfoDefaultObj} from '../constants/productInfoDefaults';
 import {ProductInfoProvider} from '../components/contexts/ProductInfoContext';
-import AppBuilderCustomizeTabs from '../components/Appcontrols/AppBuilderCustomizeTabs';
+import AppBuilderCustomizeTabs from '../components/buildercontrols/AppBuilderCustomizeTabs';
 import {VerticalTabProvider} from '../components/contexts/VerticalTabContext';
 import ApiStatusContext from '../components/contexts/APIContext';
 import {DeployContextProvider} from '../components/contexts/DeployContext';
