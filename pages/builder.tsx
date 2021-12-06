@@ -17,7 +17,7 @@ import AppBuilderCustomizeTabs from '../components/appcontrols/AppBuilderCustomi
 import {VerticalTabProvider} from '../components/contexts/VerticalTabContext';
 import ApiStatusContext from '../components/contexts/APIContext';
 import {DeployContextProvider} from '../components/contexts/DeployContext';
-
+// import ExitConfirmationModal from '../components/ExitConfirmationModal';
 export type FormState = IProductInfoDefaultObj;
 
 const useStyles = makeStyles(() =>
@@ -57,7 +57,7 @@ export interface LogoHandleInterface {}
 // }
 export default function Index() {
   const {apiLoading: loading} = useContext(ApiStatusContext);
-
+  // const [showConfirmBox, setShowConfirmBox] = React.useState<boolean>(false);
   const classes = useStyles();
   const [isDeployModal, setDeployModal] = React.useState<boolean>(false);
   const [allowedDeploy] = React.useState<boolean>(false);
@@ -92,7 +92,10 @@ export default function Index() {
                   src="./logo.png"
                 />
               </Link>
-              <AppBuilderControls openDeployModal={openDeployModal} />
+              <AppBuilderControls
+                // setSaveBeforeExitPrompt={setShowConfirmBox}
+                openDeployModal={openDeployModal}
+              />
             </Toolbar>
           </Box>
           <DeployContextProvider>
@@ -102,11 +105,10 @@ export default function Index() {
               allowedDeploy={allowedDeploy}
             />
           </DeployContextProvider>
-          {/* <ExitConfirmationModal 
-          showConfirmBox={showConfirmBox}
-          setShowConfirmBox={setShowConfirmBox}
-          handleProjectSave={saveData}
-        />  */}
+          {/* <ExitConfirmationModal
+            showConfirmBox={showConfirmBox}
+            setShowConfirmBox={setShowConfirmBox}
+          /> */}
           <Grid container item>
             <VerticalTabProvider>
               <AppBuilderCustomizeTabs />

@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AppBuilderDesktopControls = ({
   openDeployModal,
-}: IProjectBuilderControls) => {
+}: // setSaveBeforeExitPrompt,
+IProjectBuilderControls) => {
   const classes = useStyles();
   const router = useRouter();
   const {
@@ -105,11 +106,11 @@ const AppBuilderDesktopControls = ({
           style={{borderRadius: '50px'}}
           disableRipple={true}
           onClick={() => {
-            router.push('/create');
-            // if (status === 'pending') {
-            //   // setSaveBeforeExitPrompt(true);
-            // } else {
-            // }
+            if (status === 'pending') {
+              // setSaveBeforeExitPrompt(true);
+            } else {
+              router.push('/create');
+            }
           }}>
           <Box mx={18}>Close</Box>
         </Button>

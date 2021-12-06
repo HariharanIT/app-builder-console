@@ -4,6 +4,7 @@ import AppBuilderMobileControls from './AppBuilderMobileControls';
 
 export interface IProjectBuilderControls {
   openDeployModal: () => void;
+  setSaveBeforeExitPrompt?: (isShow: boolean) => void;
 }
 const AppBuilderControls = (props: IProjectBuilderControls) => {
   return (

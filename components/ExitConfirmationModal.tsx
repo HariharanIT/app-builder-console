@@ -17,7 +17,6 @@ import {useRouter} from 'next/router';
 interface IExitConfirmation {
   showConfirmBox: boolean;
   setShowConfirmBox: (isShow: boolean) => void;
-  handleProjectSave: () => any;
 }
 const useSideNavStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -129,7 +128,6 @@ const useSideNavStyles = makeStyles((theme: Theme) =>
 const ExitConfirmationModal = ({
   showConfirmBox,
   setShowConfirmBox,
-  handleProjectSave,
 }: IExitConfirmation) => {
   const SideBarClasses = useSideNavStyles();
   const router = useRouter();
@@ -185,13 +183,13 @@ const ExitConfirmationModal = ({
               marginLeft: '30px',
             }}
             onClick={async () => {
-              const saveResponse = await handleProjectSave();
-              if (saveResponse) {
-                setShowConfirmBox(false);
-                router.push(`/create`);
-              } else {
-                setShowConfirmBox(false);
-              }
+              // const saveResponse = await handleProjectSave();
+              // if (saveResponse) {
+              //   setShowConfirmBox(false);
+              //   router.push(`/create`);
+              // } else {
+              //   setShowConfirmBox(false);
+              // }
             }}
             color="primary"
             autoFocus>

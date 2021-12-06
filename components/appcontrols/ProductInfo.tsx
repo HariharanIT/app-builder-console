@@ -19,7 +19,6 @@ interface ProductInfoProps {
 export default function ProductInfo(props: ProductInfoProps) {
   const classes = ProductInfoStyles();
   const {onClickBack, handleValueChange, errors} = props;
-  console.log('errosrs on product info', {errors});
   return (
     <>
       <Box

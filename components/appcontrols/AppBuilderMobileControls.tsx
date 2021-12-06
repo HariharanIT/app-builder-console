@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AppBuilderMobileControls = ({
   openDeployModal,
-}: IProjectBuilderControls) => {
+}: // setSaveBeforeExitPrompt,
+IProjectBuilderControls) => {
   const classes = useStyles();
   const router = useRouter();
   const {
