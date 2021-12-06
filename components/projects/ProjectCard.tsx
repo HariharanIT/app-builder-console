@@ -8,7 +8,7 @@ import {useRouter} from 'next/router';
 import moment from 'moment';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 import ProjectMenus from '../MenuBox';
-import {LivePreviewSVG, getImageUrl} from '../livepreview/LivePreviewContent';
+import {LivePreviewSVG, getImageUrl} from '../Livepreview/LivePreviewContent';
 import {IProjectMeta} from './Projects';
 export interface IProject extends IProjectMeta {
   handleDeleteProject: (e: React.MouseEvent<HTMLElement>, id: string) => void;

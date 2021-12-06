@@ -2,7 +2,7 @@ import {mount} from 'enzyme';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {act} from '@testing-library/react';
-import JoinScreen from '../components/appcontrols/JoinScreen';
+import JoinScreen from '../components/Appcontrols/JoinScreen';
 import {TextField} from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 export type LogoType = 'logoRect' | 'logoSquare' | 'illustration' | 'bg';

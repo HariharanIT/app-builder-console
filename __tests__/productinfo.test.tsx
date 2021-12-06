@@ -2,7 +2,7 @@ import {mount, shallow} from 'enzyme';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {act} from '@testing-library/react';
-import ProductInfo from '../components/appcontrols/ProductInfo';
+import ProductInfo from '../components/Appcontrols/ProductInfo';
 import {TextField,TextareaAutosize} from '@material-ui/core';
 
 describe('ProductInfo Tests', () => {

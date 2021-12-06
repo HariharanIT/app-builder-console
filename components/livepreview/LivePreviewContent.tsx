@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import {TabPanel} from '../appcontrols/AppBuilderVerticalTabContent';
+import {TabPanel} from '../Appcontrols/AppBuilderVerticalTabContent';
 import {useLivePreview} from '../contexts/LivePreviewContext';
 import {useProductInfo} from '../contexts/ProductInfoContext';
 import {useVerticalTab} from '../contexts/VerticalTabContext';

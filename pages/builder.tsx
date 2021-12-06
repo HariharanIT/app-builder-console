@@ -8,12 +8,12 @@ import {
   Toolbar,
 } from '@material-ui/core';
 // import MuiAlert from '@material-ui/lab/Alert';
-import Deploy from '../components/appdeploy/DeployDilog';
-import AppBuilderControls from '../components/appcontrols/AppBuilderControls';
-import LivePreview from '../components/livepreview/LivePreview';
+import Deploy from '../components/Appdeploy/DeployDilog';
+import AppBuilderControls from '../components/Appcontrols/AppBuilderControls';
+import LivePreview from '../components/Livepreview/LivePreview';
 import {IProductInfoDefaultObj} from '../constants/productInfoDefaults';
 import {ProductInfoProvider} from '../components/contexts/ProductInfoContext';
-import AppBuilderCustomizeTabs from '../components/appcontrols/AppBuilderCustomizeTabs';
+import AppBuilderCustomizeTabs from '../components/Appcontrols/AppBuilderCustomizeTabs';
 import {VerticalTabProvider} from '../components/contexts/VerticalTabContext';
 import ApiStatusContext from '../components/contexts/APIContext';
 import {DeployContextProvider} from '../components/contexts/DeployContext';

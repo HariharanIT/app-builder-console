@@ -2,7 +2,7 @@ import {mount, shallow} from 'enzyme';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {act} from '@testing-library/react';
-import DeployDilog from '../components/appdeploy/DeployDilog';
+import DeployDilog from '../components/Appdeploy/DeployDilog';
 import {Dialog, Button,LinearProgress} from '@material-ui/core'
 describe('DeployDilog tests', () => {
   const mockFnhandleDialogClose = jest.fn();
