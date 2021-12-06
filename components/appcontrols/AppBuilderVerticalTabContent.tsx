@@ -1,12 +1,15 @@
 import React from 'react';
 import {Box, Typography} from '@material-ui/core';
 import {useSideNavStyles} from './AppBuilderCustomizeTabs';
-import ProductInfo from '../components/ProductInfo';
-import ColorFont from '../components/ColorFont';
-import JoinScreen from '../components/JoinScreen';
-import LogoBackground from '../components/LogoBackground';
-import Conferencing from '../components/Conferencing';
-import {useProductInfo, updateProductInfo} from './ProductInfoContext';
+import ProductInfo from './ProductInfo';
+import ColorFont from './ColorFont';
+import JoinScreen from './JoinScreen';
+import LogoBackground from './LogoBackground';
+import Conferencing from './Conferencing';
+import {
+  useProductInfo,
+  updateProductInfo,
+} from '../contexts/ProductInfoContext';
 export type LogoStateType = File | null;
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -44,7 +47,6 @@ const AppBuilderVerticalTabContent = ({
   const SideBarClasses = useSideNavStyles();
   const {errors, productInfo, dispatch: productInfoDispatch} = useProductInfo();
 
-  console.log('tsb content', {productInfo}, {errors});
   const handleValueChange = (event: any) => {
     updateProductInfo(productInfoDispatch, {
       [event.target.name]: event.target.value,
@@ -63,9 +65,6 @@ const AppBuilderVerticalTabContent = ({
   };
   const handleUpload = (file: LogoStateType, name: string) => {
     updateProductInfo(productInfoDispatch, {[name]: file});
-    // const tempObj: any = {...productInfo};
-    // tempObj[name] = file !== null ? `${file}` : '';
-    // uploadFile({productInfo});
   };
 
   const handleCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {

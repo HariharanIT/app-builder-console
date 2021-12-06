@@ -2,7 +2,7 @@ import {mount} from 'enzyme';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {act} from '@testing-library/react';
-import Conferencing from '../components/Conferencing';
+import Conferencing from '../components/appcontrols/Conferencing';
 import {Switch,TextField} from '@material-ui/core'
 describe('conferencing tests', () => {
   let wrapper: any;

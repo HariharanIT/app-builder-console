@@ -11,13 +11,13 @@ import {
 } from '@material-ui/core';
 import {useMutation, useLazyQuery} from '@apollo/client';
 import {useRouter} from 'next/router';
-import {DeployStyles} from '../styles/DeployDilogStyles';
-import {useDeploy} from '../components/DeployContext';
-import {DeployStatus} from '../constants/productInfoDefaults';
-import {publishToVercelMutation} from '../graphql/mutations';
-import {getVercelDeployStatus} from '../graphql/queries';
-import {getTokenWithourBearer} from '../graphql/apollo';
-import {useProductInfo} from './ProductInfoContext';
+import {DeployStyles} from '../../styles/DeployDilogStyles';
+import {useDeploy} from '../contexts/DeployContext';
+import {DeployStatus} from '../../constants/productInfoDefaults';
+import {publishToVercelMutation} from '../../graphql/mutations';
+import {getVercelDeployStatus} from '../../graphql/queries';
+import {getTokenWithourBearer} from '../../graphql/apollo';
+import {useProductInfo} from '../contexts/ProductInfoContext';
 
 const VercelDeploy = () => {
   const classes = DeployStyles();

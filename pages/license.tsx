@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Link from '../components/Link';
+import Link from '../components/common/Link';
 
 export default function About(): JSX.Element {
   return (

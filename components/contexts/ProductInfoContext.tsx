@@ -2,9 +2,9 @@ import React, {createContext, useContext, Dispatch} from 'react';
 import {
   IProductInfoDefaultObj,
   productInfoDefaultObj,
-} from '../constants/productInfoDefaults';
-import {tempErrorObject} from '../Utils/errorUtils';
-import {LogoStateType} from './AppBuilderVerticalTabContent';
+} from '../../constants/productInfoDefaults';
+import {tempErrorObject} from '../../Utils/errorUtils';
+import {LogoStateType} from '../appcontrols/AppBuilderVerticalTabContent';
 
 interface ProductInfoContext {
   status: 'pending' | 'inProgress' | 'complete' | 'rejected';

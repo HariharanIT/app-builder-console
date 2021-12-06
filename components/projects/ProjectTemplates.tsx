@@ -5,7 +5,35 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {useCardStyles} from '../components/Projects';
+import {createStyles, makeStyles} from '@material-ui/core/styles';
+
+export const useCardStyles = makeStyles(() =>
+  createStyles({
+    CardGrid: {
+      width: '25%',
+      padding: '10px 20px 10px 20px !important',
+      ['@media (max-width:500px)']: {
+        width: '100%',
+      },
+      ['@media (max-width:850px) and (min-width:500px)']: {
+        width: '50%',
+      },
+    },
+    media: {
+      borderRadius: '4px',
+      paddingTop: '56.25%',
+    },
+    mediaBackGround: {
+      position: 'relative',
+      display: 'grid',
+      placeItems: 'center',
+    },
+    caption2: {
+      fontWeight: 'bold',
+      fontSize: '16px',
+    },
+  }),
+);
 
 const ProjectTemplates = ({
   handleCreateNewProject,

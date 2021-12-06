@@ -1,9 +1,9 @@
 import React from 'react';
 import {Box, TextField, TextareaAutosize, Typography} from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import TextTip from '../components/textTip';
-import type {FormState} from '../pages/builder';
-import {ProductInfoStyles} from '../styles/ProductInfoStyles';
+import TextTip from '../textTip';
+import type {FormState} from '../../pages/builder';
+import {ProductInfoStyles} from '../../styles/ProductInfoStyles';
 interface ProductInfoProps {
   onClickBack: VoidFunction;
   handleValueChange:

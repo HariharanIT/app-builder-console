@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dialog, Box, Typography} from '@material-ui/core';
 import {Close} from '@material-ui/icons';
-import {DeployStyles} from '../styles/DeployDilogStyles';
+import {DeployStyles} from '../../styles/DeployDilogStyles';
 import HerokuDeploy from './HerokuDeploy';
 import VercelDeploy from './VercelDeploy';
 import PublishedApp from './PublishedApp';

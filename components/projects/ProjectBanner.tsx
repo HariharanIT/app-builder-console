@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 
-const useHadStyles = makeStyles(() =>
+const useHeaderStyles = makeStyles(() =>
   createStyles({
     banerGrid: {
       height: '300px',
@@ -51,7 +51,7 @@ const useHadStyles = makeStyles(() =>
 );
 
 const ProjectBanner = () => {
-  const HadClasses = useHadStyles();
+  const HeaderClasses = useHeaderStyles();
   return (
     <Grid
       container
@@ -59,24 +59,24 @@ const ProjectBanner = () => {
         backgroundImage: "url('./console-background.jpg')",
         backgroundSize: 'contain',
       }}
-      className={HadClasses.banerGrid}>
+      className={HeaderClasses.banerGrid}>
       <Grid sm={6} xs={12} item={true} style={{height: '100%'}}>
         <Box
-          className={HadClasses.LeftGrid}
+          className={HeaderClasses.LeftGrid}
           width="100%"
           height="100%"
           px={35}
           fontSize={32}
           display="grid"
           alignItems="center">
-          <Typography variant="body1" className={HadClasses.LeftGridText}>
+          <Typography variant="body1" className={HeaderClasses.LeftGridText}>
             {' '}
             The fastest way to personalize and publish real-time engagement apps
           </Typography>
         </Box>
       </Grid>
-      <Grid sm={6} xs={12} className={HadClasses.RightGrid} item={true}>
-        <img className={HadClasses.backGround} src="./herobanner.png" />
+      <Grid sm={6} xs={12} className={HeaderClasses.RightGrid} item={true}>
+        <img className={HeaderClasses.backGround} src="./herobanner.png" />
       </Grid>
     </Grid>
   );

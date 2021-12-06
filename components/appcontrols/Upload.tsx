@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Box, Snackbar} from '@material-ui/core';
-import type {LogoStateType, LogoType} from '../pages/builder';
-import {UploadStyles} from '../styles/UploadStyles';
+import type {LogoStateType, LogoType} from '../../pages/builder';
+import {UploadStyles} from '../../styles/UploadStyles';
 import MuiAlert from '@material-ui/lab/Alert';
 interface UploadProps {
   name: LogoType;

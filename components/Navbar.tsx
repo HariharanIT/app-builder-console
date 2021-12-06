@@ -9,7 +9,7 @@ import {useRouter} from 'next/router';
 import {Button} from '@material-ui/core';
 import {useQuery} from '@apollo/client';
 import {getUserEmailQuery} from '../graphql/queries';
-import ApiStatusContext from './APIContext';
+import ApiStatusContext from './contexts/APIContext';
 
 export interface IUser {
   email: string;

@@ -9,7 +9,7 @@ import ExpandMore from '@material-ui/icons/AddRounded';
 import {useRouter} from 'next/router';
 import clsx from 'clsx';
 import sidebar from '../sidebar';
-import Link, {LinkProps} from '../components/Link';
+import Link, {LinkProps} from '../components/common/Link';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

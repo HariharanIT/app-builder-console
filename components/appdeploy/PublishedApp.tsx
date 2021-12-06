@@ -8,8 +8,8 @@ import {
   Button,
   Link,
 } from '@material-ui/core';
-import {DeployStyles} from '../styles/DeployDilogStyles';
-import {useProductInfo} from './ProductInfoContext';
+import {DeployStyles} from '../../styles/DeployDilogStyles';
+import {useProductInfo} from '../contexts/ProductInfoContext';
 
 const PublishedApp = () => {
   const classes = DeployStyles();

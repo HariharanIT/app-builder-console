@@ -1,5 +1,5 @@
 import React from 'react';
-import Link, {LinkProps} from '../components/Link';
+import Link, {LinkProps} from '../components/common/Link';
 import useActiveLink from './useActiveLink';
 
 function NavLink(props: LinkProps) {

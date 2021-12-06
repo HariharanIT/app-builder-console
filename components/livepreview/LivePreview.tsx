@@ -9,8 +9,11 @@ import {
   Grid,
 } from '@material-ui/core';
 import LivePreviewContent from './LivePreviewContent';
-import {useProductInfo} from './ProductInfoContext';
-import {LivePreviewProvider, useLivePreview} from './LivePreviewContext';
+import {useProductInfo} from '../contexts/ProductInfoContext';
+import {
+  LivePreviewProvider,
+  useLivePreview,
+} from '../contexts/LivePreviewContext';
 
 const DesktopIcon = ({color}: {color: string}) => (
   <svg
@@ -145,9 +148,7 @@ const LivePeviewScreenTypeToggle = () => {
     _event: React.ChangeEvent<{}>,
     newValue: number,
   ) => {
-    // setValue2(newValue);
     setLivePreviewDisplayType(newValue);
-    console.log(newValue);
   };
   return (
     <Tabs
@@ -182,7 +183,6 @@ const LivePeviewScreenTypeToggle = () => {
 };
 const LivePreviewHeader = () => {
   const ContentClasses = useContentStyles();
-  console.log('live preview header');
   return (
     <Box className={ContentClasses.topNav}>
       <LivePreviewHeaderTitle />

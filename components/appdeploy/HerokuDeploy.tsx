@@ -11,12 +11,12 @@ import {
 } from '@material-ui/core';
 import {useMutation, useLazyQuery} from '@apollo/client';
 import {useRouter} from 'next/router';
-import {DeployStyles} from '../styles/DeployDilogStyles';
-import {useDeploy} from '../components/DeployContext';
-import {DeployStatus} from '../constants/productInfoDefaults';
-import {publishToHerokuMutation} from '../graphql/mutations';
-import {getHerokuDeployStatus} from '../graphql/queries';
-import {getTokenWithourBearer} from '../graphql/apollo';
+import {DeployStyles} from '../../styles/DeployDilogStyles';
+import {useDeploy} from '../contexts/DeployContext';
+import {DeployStatus} from '../../constants/productInfoDefaults';
+import {publishToHerokuMutation} from '../../graphql/mutations';
+import {getHerokuDeployStatus} from '../../graphql/queries';
+import {getTokenWithourBearer} from '../../graphql/apollo';
 
 const HerokuDeploy = () => {
   const classes = DeployStyles();

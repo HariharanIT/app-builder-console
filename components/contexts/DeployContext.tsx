@@ -7,7 +7,7 @@ import {
   SetStateAction,
 } from 'react';
 import {useProductInfo} from './ProductInfoContext';
-import {DeployStatus} from '../constants/productInfoDefaults';
+import {DeployStatus} from '../../constants/productInfoDefaults';
 interface DeployContext {
   herokuStatus: DeployStatus;
   setHerokuStatus: Dispatch<SetStateAction<DeployStatus>>;

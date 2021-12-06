@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import Head from 'next/head';
 import {AppProps} from 'next/app';
@@ -15,8 +14,7 @@ import withGA from 'next-ga';
 import {MDXProvider} from '@mdx-js/react';
 import {Snackbar, Backdrop, CircularProgress} from '@material-ui/core';
 import components from '../MDXComponents';
-// import Header from '../components/Header';
-import ApiStatusContext from '../components/APIContext';
+import ApiStatusContext from '../components/contexts/APIContext';
 import '../styles.css';
 
 function Alert(props: any) {

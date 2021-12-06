@@ -153,8 +153,7 @@ const Login = () => {
             <Box className={styles.xtext}>Already have an account?</Box>
             <Box className={styles.xbtnouter}>
               <a
-                href="http://sso2.staging.agora.io/api/v0/oauth/authorize?scope=basic_info&response_type=code&state=url=http://localhost:3000/redirect&redirect_uri=https://staging1.rteappbuilder.com/auth/agora&client_id=7a8f4c3d28fa40f6b506a2725c2a81e8
-">
+                href={`http://sso2.staging.agora.io/api/v0/oauth/authorize?scope=basic_info&response_type=code&state=url=${window.location.origin}/redirect&redirect_uri=https://staging1.rteappbuilder.com/auth/agora&client_id=7a8f4c3d28fa40f6b506a2725c2a81e8`}>
                 <button type="button" className={styles.xbtn}>
                   Login
                 </button>

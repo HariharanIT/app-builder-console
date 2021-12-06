@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import Projects from '../components/Projects';
-import ProjectTemplates from '../components/ProjectTemplates';
-import NewProjectModal from '../components/NewProjectModal';
-import ProjectBanner from '../components/ProjectBanner';
+import Projects from '../components/projects/Projects';
+import ProjectTemplates from '../components/projects/ProjectTemplates';
+import NewProjectModal from '../components/projects/NewProjectModal';
+import ProjectBanner from '../components/projects/ProjectBanner';
 
 export default function ButtonAppBar() {
   const [open, setOpen] = React.useState(false);

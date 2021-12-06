@@ -3,10 +3,10 @@ import {ColorPicker, Color as ColorType} from 'material-ui-color';
 import {Box, TextField, Typography, Grid} from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {debounce} from 'ts-debounce';
-import TextTip from '../components/textTip';
+import TextTip from '../textTip';
 import Upload from './Upload';
-import {ColorFontStyles} from '../styles/ColorFontStyles';
-import {theme} from '../Theme/themeOption';
+import {ColorFontStyles} from '../../styles/ColorFontStyles';
+import {theme} from '../../Theme/themeOption';
 
 export type LogoType = 'logoRect' | 'logoSquare' | 'illustration' | 'bg';
 export type LogoStateType = File | null;

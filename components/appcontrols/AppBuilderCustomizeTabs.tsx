@@ -13,13 +13,16 @@ import {
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 import AppBuilderVerticalTabContent from './AppBuilderVerticalTabContent';
-import {useProductInfo, productInfoUpdateComplete} from './ProductInfoContext';
-import {useVerticalTab} from './VerticalTabContext';
-import ApiStatusContext from './APIContext';
+import {
+  useProductInfo,
+  productInfoUpdateComplete,
+} from '../contexts/ProductInfoContext';
+import {useVerticalTab} from '../contexts/VerticalTabContext';
+import ApiStatusContext from '../contexts/APIContext';
 import {useRouter} from 'next/router';
 import {useQuery} from '@apollo/client';
-import {projectByIdQuery} from '../graphql/queries';
-import {IErrorObj} from '../Utils/errorUtils';
+import {projectByIdQuery} from '../../graphql/queries';
+import {IErrorObj} from '../../Utils/errorUtils';
 
 function a11yProps(index: number) {
   return {

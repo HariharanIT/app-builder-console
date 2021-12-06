@@ -2,7 +2,7 @@ import {mount} from 'enzyme';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {act} from '@testing-library/react';
-import ColorFont from '../components/ColorFont';
+import ColorFont from '../components/appcontrols/ColorFont';
 import {TextField} from '@material-ui/core'
 describe('ColorFont tests',()=>{
     let wrapper: any;

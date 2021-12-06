@@ -2,8 +2,8 @@ import {shallow} from 'enzyme';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {act} from '@testing-library/react';
-import LogoBackground from '../components/LogoBackground';
-import Upload from '../components/Upload';
+import LogoBackground from '../components/appcontrols/LogoBackground';
+import Upload from '../components/appcontrols/Upload';
 export type LogoType = 'logoRect' | 'logoSquare' | 'illustration' | 'bg';
 export type LogoStateType = File | null;
 describe('Logo and background Tests', () => {

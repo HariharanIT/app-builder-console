@@ -2,9 +2,9 @@ import React from 'react';
 import Upload from './Upload';
 import {Box, Typography} from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import TextTip from '../components/textTip';
-import type {FormState} from '../pages/builder';
-import {LogoBackgroundStyles} from '../styles/LogoBackgroundStyles';
+import TextTip from '../textTip';
+import type {FormState} from '../../pages/builder';
+import {LogoBackgroundStyles} from '../../styles/LogoBackgroundStyles';
 export type LogoType = 'logoRect' | 'logoSquare' | 'illustration' | 'bg';
 export type LogoStateType = File | null;
 interface LogoBackgroundProps {

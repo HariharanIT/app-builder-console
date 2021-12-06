@@ -8,15 +8,15 @@ import {
   Toolbar,
 } from '@material-ui/core';
 // import MuiAlert from '@material-ui/lab/Alert';
-import Deploy from '../components/DeployDilog';
-import AppBuilderControls from '../components/AppBuilderControls';
-import LivePreview from '../components/LivePreview';
+import Deploy from '../components/appdeploy/DeployDilog';
+import AppBuilderControls from '../components/appcontrols/AppBuilderControls';
+import LivePreview from '../components/livepreview/LivePreview';
 import {IProductInfoDefaultObj} from '../constants/productInfoDefaults';
-import {ProductInfoProvider} from '../components/ProductInfoContext';
-import AppBuilderCustomizeTabs from '../components/AppBuilderCustomizeTabs';
-import {VerticalTabProvider} from '../components/VerticalTabContext';
-import ApiStatusContext from '../components/APIContext';
-import {DeployContextProvider} from '../components/DeployContext';
+import {ProductInfoProvider} from '../components/contexts/ProductInfoContext';
+import AppBuilderCustomizeTabs from '../components/appcontrols/AppBuilderCustomizeTabs';
+import {VerticalTabProvider} from '../components/contexts/VerticalTabContext';
+import ApiStatusContext from '../components/contexts/APIContext';
+import {DeployContextProvider} from '../components/contexts/DeployContext';
 
 export type FormState = IProductInfoDefaultObj;
 

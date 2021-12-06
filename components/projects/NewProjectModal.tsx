@@ -7,10 +7,10 @@ import {createStyles, makeStyles} from '@material-ui/core/styles';
 import {useRouter} from 'next/router';
 import {useMutation} from '@apollo/client';
 import {FormControl, Select, Button} from '@material-ui/core';
-import Link from '../components/Link';
+import Link from '../common/Link';
 // import { createProjectData  } from '../config/PerformAPI';
-import {createNewProjectMutation} from '../graphql/mutations';
-import ApiStatusContext from './APIContext';
+import {createNewProjectMutation} from '../../graphql/mutations';
+import ApiStatusContext from '../contexts/APIContext';
 import {useEffect} from 'react';
 
 const useDialogStyles = makeStyles(() =>
