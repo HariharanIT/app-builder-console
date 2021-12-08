@@ -69,6 +69,8 @@ export const projectByIdQuery = gql`
       backend_deploy_status
       frontend_endpoint
       backend_endpoint
+      log_enabled
+      geo_fencing
     }
   }
 `;

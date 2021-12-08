@@ -267,6 +267,8 @@ export default function Download(props: DownloadProps) {
             PSTN_PASSWORD: props.configData.pstn_password || '',
             PSTN_ACCOUNT: props.configData.pstn_account || '',
             PROFILE: '480p_8',
+            LOG_ENABLED: props.configData.log_enabled,
+            GEO_FENCING: props.configData.geo_fencing,
           },
           null,
           2,

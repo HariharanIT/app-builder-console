@@ -118,6 +118,8 @@ export const createNewProjectMutation = gql`
       pstn_password
       pstn_account
       video_profile
+      log_enabled
+      geo_fencing
     }
   }
 `;

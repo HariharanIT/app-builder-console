@@ -59,6 +59,8 @@ export interface IProductInfoDefaultObj {
   heading: string;
   backend_deploy_status: DeployStatus;
   frontend_deploy_status: DeployStatus;
+  log_enabled: Boolean;
+  geo_fencing: Boolean;
 }
 
 export const productInfoDefaultObj: IProductInfoDefaultObj = {
@@ -113,6 +115,8 @@ export const productInfoDefaultObj: IProductInfoDefaultObj = {
   frontend_deploy_status: DeployStatus.NONE,
   // missing properies
   heading: 'Acme',
+  log_enabled: false,
+  geo_fencing: true,
 };
 
 export const productInfoDefaultErrorObj = {

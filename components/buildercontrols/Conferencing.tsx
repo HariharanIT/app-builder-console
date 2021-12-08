@@ -445,20 +445,38 @@ export default function Conferencing(props: Conferencing) {
             name="encryption_enabled"
           />
         </Box>
-        <Typography
-          variant="caption"
-          className={classes.TurboUser}
-          component="p">
-          Sentry DSN
-        </Typography>
-        <TextField
-          className={classes.textField}
-          label="Sentry DSN"
-          name="sentry_dsn"
-          variant="outlined"
-          value={value.sentry_dsn}
-          onChange={handleValueChange}
-        />
+        <Box component="div" className={classes.SwitchContainer}>
+          <Typography
+            variant="caption"
+            className={classes.SwitchText}
+            component="p"
+            style={{marginRight: 'auto'}}>
+            Enable Log Upload
+          </Typography>
+          <IOSSwitch
+            checked={value.log_enabled as boolean}
+            onChange={handleCheckChange}
+            name="log_enabled"
+          />
+        </Box>
+        {value.log_enabled ? (
+          <>
+            <Typography
+              variant="caption"
+              className={classes.TurboUser}
+              component="p">
+              Sentry DSN
+            </Typography>
+            <TextField
+              className={classes.textField}
+              label="Sentry DSN"
+              name="sentry_dsn"
+              variant="outlined"
+              value={value.sentry_dsn}
+              onChange={handleValueChange}
+            />
+          </>
+        ) : null}
       </Box>
     </>
   );
