@@ -348,12 +348,6 @@ export const validateBeforeSaving = ({
   dataToValidate: IProductInfoDefaultObj;
 }) => {
   // Product's general info validation, name, desc etc...
-  //   console.log('inside validation', {
-  //   generalInfoValidation({dataToValidate, errorObj});
-  //   joinScreenValidation({dataToValidate, errorObj});
-  //   conferencingScreenValidation({dataToValidate, errorObj});
-  //   return errorObj;
-  //   });
   return {
     ...generalInfoValidation({dataToValidate}),
     ...joinScreenValidation({dataToValidate}),
