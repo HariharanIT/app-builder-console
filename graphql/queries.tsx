@@ -23,6 +23,7 @@ export const projectByIdQuery = gql`
       id
       product_id
       product_name
+      project_template
       app_id
       app_certificate
       primary_color

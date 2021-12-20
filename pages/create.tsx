@@ -7,10 +7,13 @@ import ProjectBanner from '../components/projects/ProjectBanner';
 
 export default function ButtonAppBar() {
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
+  const [selectedTemplate, setSelectedTemplate] = React.useState<any>('');
+  const handleClickOpen = (value?: string) => {
+    setSelectedTemplate(value);
     setOpen(true);
   };
   const handleClose = () => {
+    setSelectedTemplate('');
     setOpen(false);
   };
 
@@ -25,7 +28,11 @@ export default function ButtonAppBar() {
       <ProjectBanner />
       <Projects handleCreateNewProject={handleClickOpen} />
       <ProjectTemplates handleCreateNewProject={handleClickOpen} />
-      <NewProjectModal handleClose={handleClose} isOpen={open} />
+      <NewProjectModal
+        selectedTemplate={selectedTemplate}
+        handleClose={handleClose}
+        isOpen={open}
+      />
     </div>
   );
 }

@@ -58,8 +58,13 @@ const template: string[] = [
 interface IProjectModal {
   handleClose: () => void;
   isOpen: boolean;
+  selectedTemplate: string;
 }
-const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
+const NewProjectModal = ({
+  handleClose,
+  isOpen,
+  selectedTemplate,
+}: IProjectModal) => {
   const DialogClasses = useDialogStyles();
   const router = useRouter();
   const [validation, setValidation] = React.useState<boolean>(false);
@@ -79,6 +84,14 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
       setLoading(false);
     }
   }, [loading, error, setLoading, setAPIError]);
+
+  React.useEffect(() => {
+    if (selectedTemplate) {
+      setProjectTemplate(selectedTemplate);
+    } else {
+      setProjectTemplate('MEETING');
+    }
+  }, [selectedTemplate]);
 
   useEffect(() => {
     if (data) {
@@ -156,6 +169,7 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
               value={projectTemplate}
               name="Project_Template">
               <option value="MEETING">Video Meetings</option>
+              <option value="LIVE_STREAMING">Live Streaming</option>
               {template.map((value, index) => (
                 <option value={value} key={index} disabled>
                   {value}

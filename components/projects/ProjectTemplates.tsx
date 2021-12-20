@@ -38,7 +38,7 @@ export const useCardStyles = makeStyles(() =>
 const ProjectTemplates = ({
   handleCreateNewProject,
 }: {
-  handleCreateNewProject: (e: React.MouseEvent<HTMLElement>) => void;
+  handleCreateNewProject: (selectedTemplate: string) => void;
 }) => {
   const CardClasses = useCardStyles();
 
@@ -50,7 +50,7 @@ const ProjectTemplates = ({
       <Grid container xs={12} item={true} id="list">
         <Grid item className={CardClasses.CardGrid}>
           <Card
-            onClick={handleCreateNewProject}
+            onClick={() => handleCreateNewProject('MEETINGS')}
             style={{borderRadius: '10px', cursor: 'pointer', height: '100%'}}>
             <Card style={{margin: '15px'}}>
               <CardMedia
@@ -64,6 +64,26 @@ const ProjectTemplates = ({
                 className={CardClasses.caption2}
                 component="h1">
                 Video Meetings
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item className={CardClasses.CardGrid}>
+          <Card
+            onClick={() => handleCreateNewProject('LIVE_STREAMING')}
+            style={{borderRadius: '10px', cursor: 'pointer', height: '100%'}}>
+            <Card style={{margin: '15px'}}>
+              <CardMedia
+                className={`${CardClasses.media} ${CardClasses.mediaBackGround}`}
+                image="./DefaultImg.png"
+              />
+            </Card>
+            <CardContent>
+              <Typography
+                variant="caption"
+                className={CardClasses.caption2}
+                component="h1">
+                Live Streaming
               </Typography>
             </CardContent>
           </Card>

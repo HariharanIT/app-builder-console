@@ -22,7 +22,7 @@ export interface IProjectMeta {
 export interface IProjects {
   projectList: IProjectMeta[];
   handleDeleteProject: (e: React.MouseEvent<HTMLElement>, id: string) => void;
-  handleCreateNewProject: (e: React.MouseEvent<HTMLElement>) => void;
+  handleCreateNewProject: (selectedTemplate: string) => void;
 }
 export const useProjectStyles = makeStyles(() =>
   createStyles({
@@ -63,7 +63,7 @@ export const useProjectStyles = makeStyles(() =>
 const Projects = ({
   handleCreateNewProject,
 }: {
-  handleCreateNewProject: (e: React.MouseEvent<HTMLElement>) => void;
+  handleCreateNewProject: (selectedTemplate: string) => void;
 }) => {
   const ProjectClasses = useProjectStyles();
   const [projectList, setProjectList] = React.useState<any>([]);
@@ -91,7 +91,7 @@ const Projects = ({
         <Grid container xs={12} item={true} id="list">
           <Grid item className={ProjectClasses.ProjectGrid}>
             <Card
-              onClick={handleCreateNewProject}
+              onClick={() => handleCreateNewProject('MEETING')}
               className={ProjectClasses.Project}>
               <img className={ProjectClasses.NewProject} src="./ADD.png" />
               <Typography

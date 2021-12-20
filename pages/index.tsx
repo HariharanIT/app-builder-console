@@ -643,7 +643,7 @@ function Home() {
               {...a11yProps(0)}
             />
             <Tab
-              label="Online Education"
+              label="Live Steaming"
               style={{
                 textTransform: 'capitalize',
                 fontFamily: 'acumin-pro-wide, sans-serif',
@@ -652,7 +652,7 @@ function Home() {
               {...a11yProps(1)}
             />
             <Tab
-              label="Drop-in audio"
+              label="Online Education"
               style={{
                 textTransform: 'capitalize',
                 fontFamily: 'acumin-pro-wide, sans-serif',
@@ -661,13 +661,22 @@ function Home() {
               {...a11yProps(2)}
             />
             <Tab
-              label="Watch Parties"
+              label="Drop-in audio"
               style={{
                 textTransform: 'capitalize',
                 fontFamily: 'acumin-pro-wide, sans-serif',
                 fontWeight: 'bolder',
               }}
               {...a11yProps(3)}
+            />
+            <Tab
+              label="Watch Parties"
+              style={{
+                textTransform: 'capitalize',
+                fontFamily: 'acumin-pro-wide, sans-serif',
+                fontWeight: 'bolder',
+              }}
+              {...a11yProps(4)}
             />
           </Tabs>
           <Select
@@ -679,9 +688,10 @@ function Home() {
               setTabValue(event.target.value);
             }}>
             <MenuItem value={0}>Video Meetings</MenuItem>
-            <MenuItem value={1}>Online Education</MenuItem>
-            <MenuItem value={2}>Drop-in audio</MenuItem>
-            <MenuItem value={3}>Watch Parties</MenuItem>
+            <MenuItem value={1}>Live Steaming</MenuItem>
+            <MenuItem value={2}>Online Education</MenuItem>
+            <MenuItem value={3}>Drop-in audio</MenuItem>
+            <MenuItem value={4}>Watch Parties</MenuItem>
           </Select>
           <TabPanel value={tabValue} index={0}>
             <Box mt={10} mb={10}>
@@ -727,6 +737,41 @@ function Home() {
                     marginRight="60px"
                     marginLeft="auto"
                     maxWidth="330px">
+                    <img src="./splashAssets/videomeetings.png" width="100%" />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box className={ContainerClasses.font16} textAlign="left">
+                    Put your brand front-and-center in every video conference
+                    experience.
+                    <ul>
+                      <li>
+                        Create branded video chat/meeting solutions without
+                        programming knowledge
+                      </li>
+                      <li>
+                        Customize beautiful templates with your own branding
+                      </li>
+                      <li>
+                        Get a custom video solution started quickly and easily,
+                        then customize the codebase to add more features and
+                        personalize the UI even further
+                      </li>
+                    </ul>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Box>
+          </TabPanel>
+          <TabPanel value={tabValue} index={2}>
+            <Box mt={10} mb={10}>
+              <Grid container spacing={10}>
+                <Grid item xs={12} sm={6}>
+                  <Box
+                    width="fit-content"
+                    marginRight="60px"
+                    marginLeft="auto"
+                    maxWidth="330px">
                     <img src="./splashAssets/education.png" width="100%" />
                   </Box>
                 </Grid>
@@ -761,7 +806,7 @@ function Home() {
               </Grid>
             </Box>
           </TabPanel>
-          <TabPanel value={tabValue} index={2}>
+          <TabPanel value={tabValue} index={3}>
             <Box mt={10} mb={10}>
               <Grid container spacing={10}>
                 <Grid item xs={12} sm={6}>
@@ -805,7 +850,7 @@ function Home() {
               </Grid>
             </Box>
           </TabPanel>
-          <TabPanel value={tabValue} index={3}>
+          <TabPanel value={tabValue} index={4}>
             <Box mt={10} mb={10}>
               <Grid container spacing={10}>
                 <Grid item xs={12} sm={6}>
