@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   Box,
   Button,
@@ -22,6 +22,7 @@ import {uploadFile} from '../../config/REST_API';
 import {IProjectBuilderControls} from './AppBuilderControls';
 import Download from '../Download';
 import ErrorToast from '../common/ErrorToast';
+import SaveConfirmation from '../common/SaveConfirmation';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     primarybutton: {
@@ -39,7 +40,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-
+function beforeUnloadListener(event: any) {
+  event.preventDefault();
+  return (event.returnValue = "Are you sure you want to close?'");
+}
 const AppBuilderDesktopControls = ({
   openDeployModal,
 }: // setSaveBeforeExitPrompt,
@@ -47,6 +51,7 @@ IProjectBuilderControls) => {
   const classes = useStyles();
   const router = useRouter();
   const [showError, setShowError] = useState(false);
+  const [showConfirm, setShowConfirmBox] = useState(false);
   const {
     status,
     errors: productInfoError,
@@ -54,6 +59,20 @@ IProjectBuilderControls) => {
     dispatch: productInfoDispatch,
   } = useProductInfo();
   const {setLoading, setAPIError} = useContext(ApiStatusContext);
+  useEffect(() => {
+    // add confirm before saving modal, for unsaved changes
+    if (status !== 'complete') {
+      window.addEventListener('beforeunload', beforeUnloadListener, {
+        capture: true,
+      });
+    }
+    // remove confirm before saving modal, if on pending unsaved changes
+    if (status === 'complete') {
+      window.removeEventListener('beforeunload', beforeUnloadListener, {
+        capture: true,
+      });
+    }
+  }, [status]);
   const handleSaveProject = async () => {
     let errors = validateBeforeSaving({
       dataToValidate: productInfo,
@@ -101,8 +120,8 @@ IProjectBuilderControls) => {
           style={{borderRadius: '50px'}}
           disableRipple={true}
           onClick={() => {
-            if (status === 'pending') {
-              // setSaveBeforeExitPrompt(true);
+            if (status !== 'complete') {
+              setShowConfirmBox(true);
             } else {
               router.push('/create');
             }
@@ -167,6 +186,11 @@ IProjectBuilderControls) => {
         />
       </Box>
       <ErrorToast isOpen={showError} setShowError={setShowError} />
+      <SaveConfirmation
+        isOpen={showConfirm}
+        setShowConfirmBox={setShowConfirmBox}
+        handleSaveProject={handleSaveProject}
+      />
     </Box>
   );
 };
