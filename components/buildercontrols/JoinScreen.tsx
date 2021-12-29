@@ -168,7 +168,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Google oauth client ID
             </Typography>
             <TextField
-              error={googleAuthErr.google_client_id !== ''}
+              error={googleAuthErr.google_client_id !== undefined}
               className={classes.textField}
               label="Google oauth client ID"
               name="google_client_id"
@@ -186,7 +186,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Google oauth client secret
             </Typography>
             <TextField
-              error={googleAuthErr.google_client_secret !== ''}
+              error={googleAuthErr.google_client_secret !== undefined}
               className={classes.textField}
               label="Google oauth client secret"
               name="google_client_secret"
@@ -243,7 +243,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Microsoft client ID
             </Typography>
             <TextField
-              error={microsoftAuthErr.microsoft_client_id !== ''}
+              error={microsoftAuthErr.microsoft_client_id !== undefined}
               className={classes.textField}
               label="Microsoft client ID"
               name="microsoft_client_id"
@@ -261,7 +261,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Microsoft client secret
             </Typography>
             <TextField
-              error={microsoftAuthErr.microsoft_client_secret !== ''}
+              error={microsoftAuthErr.microsoft_client_secret !== undefined}
               className={classes.textField}
               label="Microsoft client secret"
               name="microsoft_client_secret"
@@ -318,7 +318,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Slack client ID
             </Typography>
             <TextField
-              error={slackAuthErr.slack_client_id !== ''}
+              error={slackAuthErr.slack_client_id !== undefined}
               className={classes.textField}
               label="Slack client ID"
               name="slack_client_id"
@@ -336,7 +336,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Slack client secret
             </Typography>
             <TextField
-              error={slackAuthErr.slack_client_secret !== ''}
+              error={slackAuthErr.slack_client_secret !== undefined}
               className={classes.textField}
               label="Slack client secret"
               name="slack_client_secret"
@@ -393,7 +393,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Apple client ID
             </Typography>
             <TextField
-              error={appleAuthErr.apple_client_id !== ''}
+              error={appleAuthErr.apple_client_id !== undefined}
               className={classes.textField}
               label="Apple client ID"
               name="apple_client_id"
@@ -411,7 +411,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Apple key ID
             </Typography>
             <TextField
-              error={appleAuthErr.apple_key_id !== ''}
+              error={appleAuthErr.apple_key_id !== undefined}
               className={classes.textField}
               label="Apple key ID"
               name="apple_key_id"
@@ -429,7 +429,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Apple private key
             </Typography>
             <TextField
-              error={appleAuthErr.apple_private_key !== ''}
+              error={appleAuthErr.apple_private_key !== undefined}
               className={classes.textField}
               label="Apple private key"
               name="apple_private_key"
@@ -447,7 +447,7 @@ export default function JoinScreen(props: JoinScreenProps) {
               Apple team ID
             </Typography>
             <TextField
-              error={appleAuthErr.apple_team_id !== ''}
+              error={appleAuthErr.apple_team_id !== undefined}
               className={classes.textField}
               label="Apple team ID"
               name="apple_team_id"

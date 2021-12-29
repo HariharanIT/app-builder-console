@@ -177,3 +177,18 @@ export async function validateProductInfo(
 ) {
   dispatch({type: 'validate info', errors});
 }
+
+export const isFormValidationError = (errors: {
+  isErrorInConferencingScreen: boolean;
+  conferencingCred?: {pstn: {}; cloud: {}};
+  isErrorInAuthCred: boolean;
+  authCred?: {apple: {}; google: {}; slack: {}; microsoft: {}};
+  isProductInfoError: boolean;
+  productInfo?: {};
+}) => {
+  return (
+    errors.isProductInfoError ||
+    errors.isErrorInAuthCred ||
+    errors.isErrorInConferencingScreen
+  );
+};

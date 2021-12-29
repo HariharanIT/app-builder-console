@@ -8,7 +8,7 @@ import {getToken} from '../graphql/apollo';
 import {checkFileExt, dataURLtoFile} from '../Utils/util';
 interface DownloadProps {
   configData: FormState;
-  saveBtnState: String;
+  saveStatus: String;
   saveBtnFn: Function;
 }
 const packageJson = {
@@ -359,10 +359,19 @@ export default function Download(props: DownloadProps) {
       disabled={disableDownload}
       onClick={async () => {
         setDisableDownload(() => true);
-        if (props.saveBtnState === 'complete') {
+        // if the app is in saved state, call download code function
+        // else save try to save the  project first, if successfully saved then download
+        if (props.saveStatus === 'complete') {
           await download();
         } else {
-          await props.saveBtnFn();
+          // if successfully saved,
+          // then download.
+          try {
+            await props.saveBtnFn();
+            await download();
+          } catch (errors) {
+            console.log('Failure occured while saving');
+          }
         }
         setDisableDownload(() => false);
       }}

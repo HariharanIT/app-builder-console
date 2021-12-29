@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Box,
   Button,
@@ -15,11 +15,13 @@ import {
   productInfoUpdateComplete,
   productInfoUpdateInProgress,
   validateProductInfo,
+  isFormValidationError,
 } from '../contexts/ProductInfoContext';
 import {validateBeforeSaving} from '../../Utils/errorUtils';
 import {uploadFile} from '../../config/REST_API';
 import {IProjectBuilderControls} from './AppBuilderControls';
 import Download from '../Download';
+import ErrorToast from '../common/ErrorToast';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     primarybutton: {
@@ -44,6 +46,7 @@ const AppBuilderDesktopControls = ({
 IProjectBuilderControls) => {
   const classes = useStyles();
   const router = useRouter();
+  const [showError, setShowError] = useState(false);
   const {
     status,
     errors: productInfoError,
@@ -51,27 +54,20 @@ IProjectBuilderControls) => {
     dispatch: productInfoDispatch,
   } = useProductInfo();
   const {setLoading, setAPIError} = useContext(ApiStatusContext);
-  const isFormValidationError = (errors: {
-    isErrorInConferencingScreen: boolean;
-    conferencingCred?: {pstn: {}; cloud: {}};
-    isErrorInAuthCred: boolean;
-    authCred?: {apple: {}; google: {}; slack: {}; microsoft: {}};
-    isProductInfoError: boolean;
-    productInfo?: {};
-  }) => {
-    return (
-      errors.isProductInfoError ||
-      errors.isErrorInAuthCred ||
-      errors.isErrorInConferencingScreen
-    );
-  };
   const handleSaveProject = async () => {
     let errors = validateBeforeSaving({
       dataToValidate: productInfo,
     });
     // validate updates
     validateProductInfo(productInfoDispatch, errors);
-    if (isFormValidationError(errors)) return;
+    if (isFormValidationError(errors)) {
+      // throw new Error(
+      //   `Save Error: Frontend validation checks failed ${errors}`,
+      // );
+      setShowError(true);
+      console.log('Validation error occured');
+      // return
+    }
     // updates in progress
     productInfoUpdateInProgress(productInfoDispatch);
     setLoading(true);
@@ -83,6 +79,7 @@ IProjectBuilderControls) => {
       productInfoUpdateComplete(productInfoDispatch, result);
     } else {
       setAPIError(updatedResponse.statusText);
+      throw new Error(`Save Error: API Failure ${updatedResponse}`);
     }
   };
 
@@ -154,11 +151,12 @@ IProjectBuilderControls) => {
       </Box>
       <Box mx={6}>
         <Download
-          saveBtnState={status}
+          saveStatus={status}
           configData={productInfo}
           saveBtnFn={handleSaveProject}
         />
       </Box>
+      <ErrorToast isOpen={showError} setShowError={setShowError} />
     </Box>
   );
 };
