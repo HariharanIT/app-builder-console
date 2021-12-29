@@ -65,8 +65,8 @@ const ErrorToast = ({
         severity="error">
         Error occured in following fields : <br />
         {/* Product general info errors */}
-        {product_name && <div>{product_name} ,</div>}
-        {landing_sub_heading && <div>{landing_sub_heading} ,</div>}
+        {product_name && <div>{product_name}</div>}
+        {landing_sub_heading && <div>{landing_sub_heading}</div>}
         {/* conferencing screen errors */}
         {/* PSTN */}
         {pstn_email && <div>{pstn_email}</div>}

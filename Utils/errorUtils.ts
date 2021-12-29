@@ -30,7 +30,7 @@ const generalInfoValidation = ({
     isProductInfoError = true;
     errors = {
       ...errors,
-      product_name: 'Product Name should alphabetical or numerical value.',
+      product_name: 'Product Name should alphabetical or numerical value',
     };
   }
 

@@ -71,7 +71,7 @@ const AppBuilderVerticalTabContent = ({
     const {name, checked} = event.target;
     updateProductInfo(productInfoDispatch, {[name]: checked});
   };
-
+  console.log({productInfo});
   return (
     <Box py={20} className={SideBarClasses.subContent}>
       <TabPanel padding={0} value={selectedTabValue} index={1}>
