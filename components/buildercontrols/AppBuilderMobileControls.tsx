@@ -219,7 +219,7 @@ IProjectBuilderControls) => {
         </MenuItem>
         <MenuItem>
           <Download
-            saveBtnState={status}
+            saveStatus={status}
             configData={productInfo}
             saveBtnFn={handleSaveProject}
           />

@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Snackbar, makeStyles} from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
-import {
-  useProductInfo,
-  isFormValidationError,
-} from '../contexts/ProductInfoContext';
+import {useProductInfo} from '../contexts/ProductInfoContext';
 
 let vertical: any = 'top';
 let horizontal: any = 'center';
@@ -38,7 +35,7 @@ const ErrorToast = ({
   const {authCred, conferencingCred, productInfo} = productInfoError;
   const {apple, google, microsoft, slack} = authCred;
   const {cloud, pstn} = conferencingCred;
-  const {landing_sub_heading, product_id, product_name} = productInfo;
+  const {landing_sub_heading, product_name} = productInfo;
   const {pstn_email, pstn_password, pstn_account} = pstn;
   const {
     customer_id,

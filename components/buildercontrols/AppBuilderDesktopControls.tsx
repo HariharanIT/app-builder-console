@@ -61,12 +61,10 @@ IProjectBuilderControls) => {
     // validate updates
     validateProductInfo(productInfoDispatch, errors);
     if (isFormValidationError(errors)) {
-      // throw new Error(
-      //   `Save Error: Frontend validation checks failed ${errors}`,
-      // );
       setShowError(true);
-      console.log('Validation error occured');
-      // return
+      throw new Error(
+        `Save Error: Frontend validation checks failed ${errors}`,
+      );
     }
     // updates in progress
     productInfoUpdateInProgress(productInfoDispatch);
@@ -117,7 +115,13 @@ IProjectBuilderControls) => {
           variant="outlined"
           color="primary"
           style={{borderRadius: '50px'}}
-          onClick={handleSaveProject}
+          onClick={async () => {
+            try {
+              await handleSaveProject();
+            } catch (error) {
+              console.log(`Error occured during project save. Error: ${error}`);
+            }
+          }}
           disableRipple={true}>
           <Box mx={18} display="flex">
             <Box>
@@ -153,7 +157,13 @@ IProjectBuilderControls) => {
         <Download
           saveStatus={status}
           configData={productInfo}
-          saveBtnFn={handleSaveProject}
+          saveBtnFn={async () => {
+            try {
+              await handleSaveProject();
+            } catch (error) {
+              console.log(`Error occured during project save. Error: ${error}`);
+            }
+          }}
         />
       </Box>
       <ErrorToast isOpen={showError} setShowError={setShowError} />
