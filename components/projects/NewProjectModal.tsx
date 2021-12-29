@@ -174,6 +174,7 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
         <Button
           variant="contained"
           color="primary"
+          disabled={validation}
           className={DialogClasses.nextButton}
           disableElevation
           onClick={handleCreateNewProject}>

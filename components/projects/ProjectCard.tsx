@@ -1,5 +1,5 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,11 +7,11 @@ import Typography from '@material-ui/core/Typography';
 import {useRouter} from 'next/router';
 import moment from 'moment';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
-import ProjectMenus from '../MenuBox';
+// import ProjectMenus from '../MenuBox';
 import {LivePreviewSVG, getImageUrl} from '../editpreview/LivePreviewContent';
 import {IProjectMeta} from './Projects';
 export interface IProject extends IProjectMeta {
-  handleDeleteProject: (e: React.MouseEvent<HTMLElement>, id: string) => void;
+  handleDeleteProject?: (e: React.MouseEvent<HTMLElement>, id: string) => void;
 }
 
 export const useCardStyles = makeStyles(() =>
@@ -51,8 +51,8 @@ const ProjectCard = ({
   primary_color,
   primary_background_logo,
   primary_logo,
-  handleDeleteProject,
-}: IProject) => {
+}: // handleDeleteProject,
+IProject) => {
   const router = useRouter();
   const CardClasses = useCardStyles();
   const backgroundLogoUrl = getImageUrl(primary_background_logo);
@@ -95,13 +95,14 @@ const ProjectCard = ({
             {moment(created_at).format('MMM DD, yyyy')}
           </Typography>
         </CardContent>
-        <Box position="absolute" right="10px" top="10px">
+        {/* NOTE: Project delete is kept on hold for further discussion */}
+        {/* <Box position="absolute" right="10px" top="10px">
           <ProjectMenus
             deleteAction={(e: any) => {
               handleDeleteProject(e, id);
             }}
           />
-        </Box>
+        </Box> */}
       </Card>
     </Grid>
   );

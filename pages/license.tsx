@@ -96,7 +96,7 @@ export default function About(): JSX.Element {
           distribution, maintenance, support, licensing, and sale of Customer
           Applications.
         </p>
-        <Link href="/">Go to the main page</Link>
+        <Link href="/create">Go to the main page</Link>
       </Box>
     </Container>
   );

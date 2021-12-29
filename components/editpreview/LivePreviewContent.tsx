@@ -59,7 +59,10 @@ export const LivePreviewSVG = ({
             <feComposite in="SourceGraphic" />
           </filter>
           <pattern
-            id={`${product_name}-1`}
+            // different id required for each pattern because in the project list page we are useing
+            // the same component to render live preview,
+            // split required because some project name might contain spaces and that breakes the live preview
+            id={`${product_name.split(' ').join('')}-1`}
             preserveAspectRatio="none"
             width="100%"
             height="100%"
@@ -67,7 +70,7 @@ export const LivePreviewSVG = ({
             <image width="1136" height="730" xlinkHref={backgroundLogoUrl} />
           </pattern>
           <pattern
-            id={`${product_name}-2`}
+            id={`${product_name.split(' ').join('')}-2`}
             preserveAspectRatio="none"
             width="100%"
             height="100%"
@@ -99,14 +102,14 @@ export const LivePreviewSVG = ({
               height="730"
               rx="10"
               transform="translate(63 40)"
-              fill={`url(#${product_name}-1)`}
+              fill={`url(#${product_name.split(' ').join('')}-1)`}
             />
             <rect
               id="Agora-new-logo-rgb"
               width="82"
               height="28"
               transform="translate(590 133)"
-              fill={`url(#${product_name}-2)`}
+              fill={`url(#${product_name.split(' ').join('')}-2)`}
             />
             <text
               id="Together_Business"
