@@ -43,7 +43,8 @@ const HerokuDeploy = () => {
   React.useEffect(() => {
     window.onmessage = function (e: any) {
       const {data} = e;
-      // this post message {herokuOAuth: true} quarantees that heroku is authenticated
+      console.log('got a window message');
+      // this post message {herokuOAuth: true} guarantees that heroku is authenticated
       if (data && data.herokuOAuth) {
         console.log('*heroku authenticated*');
         // once authenticated, call the publish to heroku mutation
@@ -165,18 +166,6 @@ const HerokuDeploy = () => {
                   'myWindow',
                   'width=1015,height=580',
                 );
-
-                // if (props.allowedDeploy) {
-                //   const token: String = csrfToken();
-                //   localStorage.setItem('deployType', 'backend');
-                //   window.open(
-                //     'https://id.heroku.com/oauth/authorize?scope=global&response_type=code&state=token%3Dc5434rliofasd3ur3ie0&redirect_uri=https://staging1.rteappbuilder.com/auth/heroku&client_id=9a6d5978-6915-483c-8b6f-2ab1e1961754',
-                //     'myWindow',
-                //     'width=1015,height=580',
-                //   );
-                // } else {
-                //   alert('please save your data first');
-                // }
               }}>
               <Box>Deploy Backend</Box>
             </Button>
@@ -212,18 +201,6 @@ const HerokuDeploy = () => {
                     'myWindow',
                     'width=1015,height=580',
                   );
-
-                  // if (props.allowedDeploy) {
-                  //   const token: String = csrfToken();
-                  //   localStorage.setItem('deployType', 'backend');
-                  //   window.open(
-                  //     `https://id.heroku.com/oauth/authorize?client_id=28495dec-a108-4d52-9b32-6586f9351693&response_type=code&scope=global&state=${token}`,
-                  //     'myWindow',
-                  //     'width=1015,height=580',
-                  //   );
-                  // } else {
-                  //   alert('please save your data first');
-                  // }
                 }}>
                 <Box>Re-Deploy Backend</Box>
               </Button>

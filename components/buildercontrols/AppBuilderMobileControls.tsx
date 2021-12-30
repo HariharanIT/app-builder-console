@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {
   Menu,
   Box,
@@ -13,16 +13,11 @@ import {
 import InfoIcon from '@material-ui/icons/Info';
 import MenuIcon from '@material-ui/icons/Menu';
 import {useRouter} from 'next/router';
-import ApiStatusContext from '../contexts/APIContext';
 import {
   useProductInfo,
-  productInfoUpdateComplete,
-  productInfoUpdateInProgress,
-  validateProductInfo,
+  isFormValidationError,
 } from '../contexts/ProductInfoContext';
-import {validateBeforeSaving} from '../../Utils/errorUtils';
-import {uploadFile} from '../../config/REST_API';
-import {IProjectBuilderControls} from './AppBuilderControls';
+import {IBuilderControls} from './AppBuilderDesktopControls';
 import Download from '../Download';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -49,18 +44,13 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const AppBuilderMobileControls = ({
-  openDeployModal,
-}: // setSaveBeforeExitPrompt,
-IProjectBuilderControls) => {
+  handleSaveProject,
+  handleAppDeploy,
+  setShowConfirmBox,
+}: IBuilderControls) => {
   const classes = useStyles();
   const router = useRouter();
-  const {
-    status,
-    errors: productInfoError,
-    productInfo,
-    dispatch: productInfoDispatch,
-  } = useProductInfo();
-  const {setLoading, setAPIError} = useContext(ApiStatusContext);
+  const {status, errors: productInfoError, productInfo} = useProductInfo();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -69,53 +59,6 @@ IProjectBuilderControls) => {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const isFormValidationError = (errors: {
-    isErrorInConferencingScreen: boolean;
-    conferencingCred?: {pstn: {}; cloud: {}};
-    isErrorInAuthCred: boolean;
-    authCred?: {apple: {}; google: {}; slack: {}; microsoft: {}};
-    isProductInfoError: boolean;
-    productInfo?: {};
-  }) => {
-    return (
-      errors.isProductInfoError ||
-      errors.isErrorInAuthCred ||
-      errors.isErrorInConferencingScreen
-    );
-  };
-  const handleSaveProject = async () => {
-    let errors = validateBeforeSaving({
-      dataToValidate: productInfo,
-    });
-    // validate updates
-    validateProductInfo(productInfoDispatch, errors);
-    if (isFormValidationError(errors)) return;
-    // updates in progress
-    productInfoUpdateInProgress(productInfoDispatch);
-    setLoading(true);
-    const updatedResponse = await uploadFile({productInfo});
-    setLoading(false);
-    if (updatedResponse.status === 200) {
-      const result = await updatedResponse.json();
-      // update completed
-      productInfoUpdateComplete(productInfoDispatch, result);
-    } else {
-      setAPIError(updatedResponse.statusText);
-    }
-  };
-
-  const handleAppDeploy = () => {
-    let errors = validateBeforeSaving({
-      dataToValidate: productInfo,
-    });
-    validateProductInfo(productInfoDispatch, errors);
-    if (isFormValidationError(errors)) return;
-
-    // if no error occured on the FE and no error Occured on the backend while saving
-    // open the deploy dialog
-    openDeployModal();
   };
 
   return (
@@ -148,8 +91,8 @@ IProjectBuilderControls) => {
             style={{borderRadius: '50px', width: '100%'}}
             disableRipple={true}
             onClick={() => {
-              if (status === 'pending') {
-                // setSaveBeforeExitPrompt(true);
+              if (status !== 'complete') {
+                setShowConfirmBox(true);
               } else {
                 router.push('/create');
               }
@@ -159,11 +102,20 @@ IProjectBuilderControls) => {
         </MenuItem>
         <MenuItem>
           <Button
+            disabled={status === 'complete'}
             disableRipple={true}
             style={{borderRadius: '50px', width: '100%'}}
             variant="outlined"
             color="primary"
-            onClick={handleSaveProject}>
+            onClick={async () => {
+              try {
+                await handleSaveProject();
+              } catch (error) {
+                console.log(
+                  `Error occured during project save. Error: ${error}`,
+                );
+              }
+            }}>
             <Box mx={18} display="flex">
               <Box mr={5}>
                 {
@@ -188,7 +140,7 @@ IProjectBuilderControls) => {
                   <InfoIcon
                     style={
                       {
-                        pending: {color: '#FF8989', marginLeft: '10px'},
+                        pending: {color: '#099CFC', marginLeft: '10px'},
                         inProgress: {color: '#FFC107', marginLeft: '10px'},
                         complete: {color: '#099CFC', marginLeft: '10px'},
                         rejected: {color: '#FF8989', marginLeft: '10px'},
@@ -213,7 +165,15 @@ IProjectBuilderControls) => {
             className={classes.primarybutton}
             style={{width: '100%'}}
             disabled={isFormValidationError(productInfoError)}
-            onClick={handleAppDeploy}>
+            onClick={async () => {
+              try {
+                await handleAppDeploy();
+              } catch (error) {
+                console.log(
+                  `Failure occured while saving and opening deploy modal, Error: ${error}`,
+                );
+              }
+            }}>
             <Box>Deploy your App</Box>
           </Button>
         </MenuItem>
@@ -221,7 +181,15 @@ IProjectBuilderControls) => {
           <Download
             saveStatus={status}
             configData={productInfo}
-            saveBtnFn={handleSaveProject}
+            saveBtnFn={async () => {
+              try {
+                await handleSaveProject();
+              } catch (error) {
+                console.log(
+                  `Error occured during project save. Error: ${error}`,
+                );
+              }
+            }}
           />
         </MenuItem>
       </Menu>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Head from 'next/head';
 import {AppProps} from 'next/app';
 import {ThemeProvider, makeStyles, Theme} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import {Box} from '@material-ui/core';
 import {ApolloProvider} from '@apollo/client';
 import MuiAlert from '@material-ui/lab/Alert';
 import client from '../graphql/apollo';
@@ -25,6 +26,8 @@ const useBackDropStyles = makeStyles((theme: Theme) => ({
   backdrop: {
     zIndex: theme.zIndex.modal + 1,
     color: '#099DFD',
+    display: 'flex',
+    alignItems: 'column',
   },
 }));
 
@@ -39,8 +42,13 @@ function MyApp(props: AppProps) {
     }
   }, []);
   const BackDropStyle = useBackDropStyles();
-  const [APIError, setAPIError] = React.useState<string>('');
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const [APIError, setAPIError] = useState<string>('');
+  const [loadingMessage, setLoadingMessage] = useState<string>('Loading...');
+  const [loading, setLoader] = useState<boolean>(false);
+  const setLoading = (isLoading: boolean, loadingMessage?: string) => {
+    setLoader(isLoading);
+    if (loadingMessage) setLoadingMessage(loadingMessage);
+  };
 
   return (
     <React.Fragment>
@@ -60,14 +68,22 @@ function MyApp(props: AppProps) {
                 setLoading,
                 apiLoading: loading,
                 APIError,
+                loadingMessage,
               }}>
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
               {/* <Header /> */}
               <ProtectedRoutes>
                 <Component {...pageProps} />
-                <Backdrop className={BackDropStyle.backdrop} open={loading}>
-                  <CircularProgress color="inherit" />
+                <Backdrop className={BackDropStyle.backdrop} open={true}>
+                  {loadingMessage && (
+                    <Box color="#fff" fontSize="24">
+                      {loadingMessage}
+                    </Box>
+                  )}
+                  <Box>
+                    <CircularProgress color="inherit" />
+                  </Box>
                 </Backdrop>
                 <Snackbar
                   open={APIError !== ''}

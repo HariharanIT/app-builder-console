@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import {
   Box,
   Button,
@@ -9,20 +9,17 @@ import {
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 import {useRouter} from 'next/router';
-import ApiStatusContext from '../contexts/APIContext';
 import {
   useProductInfo,
-  productInfoUpdateComplete,
-  productInfoUpdateInProgress,
-  validateProductInfo,
   isFormValidationError,
 } from '../contexts/ProductInfoContext';
-import {validateBeforeSaving} from '../../Utils/errorUtils';
-import {uploadFile} from '../../config/REST_API';
-import {IProjectBuilderControls} from './AppBuilderControls';
 import Download from '../Download';
-import ErrorToast from '../common/ErrorToast';
-import SaveConfirmation from '../common/SaveConfirmation';
+
+export interface IBuilderControls {
+  handleSaveProject: () => void;
+  handleAppDeploy: () => void;
+  setShowConfirmBox: (isShow: boolean) => void;
+}
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     primarybutton: {
@@ -40,77 +37,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-function beforeUnloadListener(event: any) {
-  event.preventDefault();
-  return (event.returnValue = "Are you sure you want to close?'");
-}
 const AppBuilderDesktopControls = ({
-  openDeployModal,
+  handleSaveProject,
+  handleAppDeploy,
+  setShowConfirmBox,
 }: // setSaveBeforeExitPrompt,
-IProjectBuilderControls) => {
+IBuilderControls) => {
   const classes = useStyles();
   const router = useRouter();
-  const [showError, setShowError] = useState(false);
-  const [showConfirm, setShowConfirmBox] = useState(false);
-  const {
-    status,
-    errors: productInfoError,
-    productInfo,
-    dispatch: productInfoDispatch,
-  } = useProductInfo();
-  const {setLoading, setAPIError} = useContext(ApiStatusContext);
-  useEffect(() => {
-    // add confirm before saving modal, for unsaved changes
-    if (status !== 'complete') {
-      window.addEventListener('beforeunload', beforeUnloadListener, {
-        capture: true,
-      });
-    }
-    // remove confirm before saving modal, if on pending unsaved changes
-    if (status === 'complete') {
-      window.removeEventListener('beforeunload', beforeUnloadListener, {
-        capture: true,
-      });
-    }
-  }, [status]);
-  const handleSaveProject = async () => {
-    let errors = validateBeforeSaving({
-      dataToValidate: productInfo,
-    });
-    // validate updates
-    validateProductInfo(productInfoDispatch, errors);
-    if (isFormValidationError(errors)) {
-      setShowError(true);
-      throw new Error(
-        `Save Error: Frontend validation checks failed ${errors}`,
-      );
-    }
-    // updates in progress
-    productInfoUpdateInProgress(productInfoDispatch);
-    setLoading(true);
-    const updatedResponse = await uploadFile({productInfo});
-    setLoading(false);
-    if (updatedResponse.status === 200) {
-      const result = await updatedResponse.json();
-      // update completed
-      productInfoUpdateComplete(productInfoDispatch, result);
-    } else {
-      setAPIError(updatedResponse.statusText);
-      throw new Error(`Save Error: API Failure ${updatedResponse}`);
-    }
-  };
-
-  const handleAppDeploy = () => {
-    let errors = validateBeforeSaving({
-      dataToValidate: productInfo,
-    });
-    validateProductInfo(productInfoDispatch, errors);
-    if (isFormValidationError(errors)) return;
-
-    // if no error occured on the FE and no error Occured on the backend while saving
-    // open the deploy dialog
-    openDeployModal();
-  };
+  const {status, errors: productInfoError, productInfo} = useProductInfo();
 
   return (
     <Box mx={7} className={classes.sectionDesktop}>
@@ -131,6 +66,7 @@ IProjectBuilderControls) => {
       </Box>
       <Box mx={6}>
         <Button
+          disabled={status === 'complete'}
           variant="outlined"
           color="primary"
           style={{borderRadius: '50px'}}
@@ -168,7 +104,15 @@ IProjectBuilderControls) => {
           disableElevation
           disabled={isFormValidationError(productInfoError)}
           className={classes.primarybutton}
-          onClick={handleAppDeploy}>
+          onClick={async () => {
+            try {
+              await handleAppDeploy();
+            } catch (error) {
+              console.log(
+                `Failure occured while saving and opening deploy modal, Error: ${error}`,
+              );
+            }
+          }}>
           <Box mx={9}>Deploy your App</Box>
         </Button>
       </Box>
@@ -185,12 +129,6 @@ IProjectBuilderControls) => {
           }}
         />
       </Box>
-      <ErrorToast isOpen={showError} setShowError={setShowError} />
-      <SaveConfirmation
-        isOpen={showConfirm}
-        setShowConfirmBox={setShowConfirmBox}
-        handleSaveProject={handleSaveProject}
-      />
     </Box>
   );
 };

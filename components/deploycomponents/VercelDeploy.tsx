@@ -55,7 +55,7 @@ const VercelDeploy = () => {
       const {data} = e;
       if (data && data.vercelOAuth) {
         console.log('*vercel authenticated*');
-        // once authenticated, call the publish to heroku mutation
+        // once authenticated, call the publish to vercel mutation
 
         // NOTE: CHECK-LATER unable to access product id the react way, therrefore using plain javascript
         const urlParams = new URLSearchParams(window.location.search);
@@ -72,12 +72,11 @@ const VercelDeploy = () => {
   }, []);
   useEffect(() => {
     if (vercelPublishData) {
-      // Published to heroku
+      // Published to vercel
       const {publishToVercel} = vercelPublishData;
-      // setSkip(false);
       if (publishToVercel.status === DeployStatus.PENDING) {
         setVercelStatus(publishToVercel.status);
-        //*start polling for heroku publish status*
+        //*start polling for vercel publish status*
         // @ts-ignore
         timerVercel.current = setInterval(() => {
           vercelStatusPolling();
@@ -161,7 +160,7 @@ const VercelDeploy = () => {
           className={classes.Typography2}>
           Deploy Frontend to Vercel
         </Typography>
-        {!productInfo.backend_endpoint ? (
+        {productInfo.backend_endpoint ? (
           <React.Fragment>
             {vercelStatus === DeployStatus.NONE && (
               <Button
@@ -210,7 +209,6 @@ const VercelDeploy = () => {
                   className={classes.primaryButton}
                   onClick={() => {
                     // const token: string = csrfToken();
-                    window.localStorage.setItem('deployType', 'frontend');
                     window.open(
                       `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
                       'myWindow',

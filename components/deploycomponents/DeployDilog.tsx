@@ -9,7 +9,6 @@ import PublishedApp from './PublishedApp';
 interface Deploy {
   handleDialogClose: () => void;
   openDialog: boolean;
-  allowedDeploy: boolean;
 }
 const Deploy = ({handleDialogClose, openDialog}: Deploy) => {
   const classes = DeployStyles();

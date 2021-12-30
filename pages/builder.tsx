@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {
   Box,
   Grid,
@@ -15,7 +15,6 @@ import {IProductInfoDefaultObj} from '../constants/productInfoDefaults';
 import {ProductInfoProvider} from '../components/contexts/ProductInfoContext';
 import AppBuilderCustomizeTabs from '../components/buildercontrols/AppBuilderCustomizeTabs';
 import {VerticalTabProvider} from '../components/contexts/VerticalTabContext';
-import ApiStatusContext from '../components/contexts/APIContext';
 import {DeployContextProvider} from '../components/contexts/DeployContext';
 // import ExitConfirmationModal from '../components/ExitConfirmationModal';
 export type FormState = IProductInfoDefaultObj;
@@ -48,24 +47,9 @@ export type LogoType = string;
 export type LogoStateType = File | null;
 export interface LogoHandleInterface {}
 
-// function Alert(props: any) {
-//   return <MuiAlert elevation={6} variant="filled" {...props} />;
-// }
-// function beforeUnloadListener(event: any) {
-//   event.preventDefault();
-//   return (event.returnValue = "Are you sure you want to close?'");
-// }
 export default function Index() {
-  const {apiLoading: loading} = useContext(ApiStatusContext);
-  // const [showConfirmBox, setShowConfirmBox] = React.useState<boolean>(false);
   const classes = useStyles();
   const [isDeployModal, setDeployModal] = React.useState<boolean>(false);
-  const [allowedDeploy] = React.useState<boolean>(false);
-  // const handleChangesSaveStatusPending = () => {
-  //   setSaveBtn('save');
-  //   addEventListener('beforeunload', beforeUnloadListener, {capture: true});
-  //   setFirstRenderSave(false);
-  // };
   const openDeployModal = () => {
     setDeployModal(true);
   };
@@ -102,7 +86,6 @@ export default function Index() {
             <Deploy
               handleDialogClose={closeDeployModal}
               openDialog={isDeployModal}
-              allowedDeploy={allowedDeploy}
             />
           </DeployContextProvider>
           {/* <ExitConfirmationModal
@@ -112,7 +95,7 @@ export default function Index() {
           <Grid container item>
             <VerticalTabProvider>
               <AppBuilderCustomizeTabs />
-              {!loading && <LivePreview />}
+              <LivePreview />
             </VerticalTabProvider>
           </Grid>
         </div>
