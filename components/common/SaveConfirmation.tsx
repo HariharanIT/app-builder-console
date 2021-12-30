@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import IconButton from '@material-ui/core/IconButton';
+import {Close} from '@material-ui/icons';
 
 const SaveConfirmation = ({
   isOpen,
@@ -32,10 +33,21 @@ const SaveConfirmation = ({
       }}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description">
+      <Box
+        style={{
+          marginLeft: 'auto',
+          marginTop: '24px',
+          marginRight: '24px',
+          cursor: 'pointer',
+        }}
+        onClick={() => {
+          setShowConfirmBox(false);
+        }}>
+        <Close />
+      </Box>
+
       <Box p={12}>
-        <DialogTitle
-          id="alert-dialog-title"
-          style={{padding: '5px 0px 0px 0px'}}>
+        <DialogTitle id="alert-dialog-title" style={{marginTop: '-20px'}}>
           <Box display="grid" justifyContent="center">
             <IconButton
               style={{color: '#349dfb', padding: '0px'}}

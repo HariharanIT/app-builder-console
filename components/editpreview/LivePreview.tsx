@@ -124,7 +124,7 @@ const LivePreviewHeaderTitle = () => {
         variant="caption"
         className={ContentClasses.mainHading}
         component="h1">
-        {productInfo.heading !== '' ? productInfo.heading : 'Acme Conferencing'}
+        {productInfo.product_name}
       </Typography>
       <Box className={ContentClasses.lable}>
         <Typography

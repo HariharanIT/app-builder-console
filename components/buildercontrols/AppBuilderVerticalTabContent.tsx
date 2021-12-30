@@ -64,6 +64,7 @@ const AppBuilderVerticalTabContent = ({
     updateProductInfo(productInfoDispatch, {[name]: color});
   };
   const handleUpload = (file: LogoStateType, name: string) => {
+    console.log({file}, {name});
     updateProductInfo(productInfoDispatch, {[name]: file});
   };
 
@@ -71,7 +72,6 @@ const AppBuilderVerticalTabContent = ({
     const {name, checked} = event.target;
     updateProductInfo(productInfoDispatch, {[name]: checked});
   };
-  console.log({productInfo});
   return (
     <Box py={20} className={SideBarClasses.subContent}>
       <TabPanel padding={0} value={selectedTabValue} index={1}>

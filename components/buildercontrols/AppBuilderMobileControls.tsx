@@ -127,28 +127,6 @@ const AppBuilderMobileControls = ({
                   }[status]
                 }
               </Box>
-              {status !== 'complete' && (
-                <Tooltip
-                  title={
-                    {
-                      pending: 'Save',
-                      inProgress: 'Saving',
-                      complete: 'Saved',
-                      rejected: 'Save',
-                    }[status]
-                  }>
-                  <InfoIcon
-                    style={
-                      {
-                        pending: {color: '#099CFC', marginLeft: '10px'},
-                        inProgress: {color: '#FFC107', marginLeft: '10px'},
-                        complete: {color: '#099CFC', marginLeft: '10px'},
-                        rejected: {color: '#FF8989', marginLeft: '10px'},
-                      }[status]
-                    }
-                  />
-                </Tooltip>
-              )}
               {isFormValidationError(productInfoError) && (
                 <Tooltip title="Required fields are not filled. Please check">
                   <InfoIcon style={{color: '#FF8989', marginLeft: '10px'}} />
