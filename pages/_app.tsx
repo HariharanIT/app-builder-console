@@ -75,7 +75,7 @@ function MyApp(props: AppProps) {
               {/* <Header /> */}
               <ProtectedRoutes>
                 <Component {...pageProps} />
-                <Backdrop className={BackDropStyle.backdrop} open={true}>
+                <Backdrop className={BackDropStyle.backdrop} open={loading}>
                   {loadingMessage && (
                     <Box color="#fff" fontSize="24">
                       {loadingMessage}
