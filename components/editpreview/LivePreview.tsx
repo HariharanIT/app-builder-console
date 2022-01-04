@@ -14,7 +14,7 @@ import {
   LivePreviewProvider,
   useLivePreview,
 } from '../contexts/LivePreviewContext';
-
+import {ProjectTemplate} from '../../constants/productInfoDefaults';
 const DesktopIcon = ({color}: {color: string}) => (
   <svg
     width="26"
@@ -114,6 +114,15 @@ const useContentStyles = makeStyles(() =>
   }),
 );
 
+const getProjectTemplateName = (value: keyof typeof ProjectTemplate) => {
+  try {
+    return ProjectTemplate[value] ? ProjectTemplate[value] : '';
+  } catch (e) {
+    console.error('Could not find the project template name');
+    return '';
+  }
+};
+
 const LivePreviewHeaderTitle = () => {
   const ContentClasses = useContentStyles();
   const {productInfo} = useProductInfo();
@@ -131,7 +140,9 @@ const LivePreviewHeaderTitle = () => {
           variant="caption"
           className={ContentClasses.lableText}
           component="p">
-          Video Meetings
+          {getProjectTemplateName(
+            productInfo.project_template as keyof typeof ProjectTemplate,
+          )}
         </Typography>
       </Box>
     </>

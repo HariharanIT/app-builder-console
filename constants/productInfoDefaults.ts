@@ -1,7 +1,12 @@
 enum ProjectPreset {
   MEETING = 'MEETING',
   EVENTS = 'EVENTS',
+  LIVE_STREAMING = 'LIVE_STREAMING',
 }
+export const ProjectTemplate = {
+  MEETING: 'Video Meetings',
+  LIVE_STREAMING: 'Live Steaming',
+};
 export enum DeployStatus {
   SUCCESS = 'SUCCESS',
   PENDING = 'PENDING',
