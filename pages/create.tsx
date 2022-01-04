@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Projects from '../components/projects/Projects';
-import ProjectTemplates from '../components/projects/ProjectTemplates';
 import NewProjectModal from '../components/projects/NewProjectModal';
 import ProjectBanner from '../components/projects/ProjectBanner';
 
@@ -24,7 +23,6 @@ export default function ButtonAppBar() {
       <Navbar />
       <ProjectBanner />
       <Projects handleCreateNewProject={handleClickOpen} />
-      <ProjectTemplates handleCreateNewProject={handleClickOpen} />
       <NewProjectModal handleClose={handleClose} isOpen={open} />
     </div>
   );
