@@ -13,6 +13,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Switch, {SwitchClassKey, SwitchProps} from '@material-ui/core/Switch';
 import type {FormState} from '../../pages/builder';
 import {ProdcuctInfoStyles} from '../../styles/ConferencingStyles';
+import {ProjectTemplate} from '../../constants/productInfoDefaults';
 interface Conferencing {
   onClickBack: VoidFunction;
   handleValueChange:
@@ -445,6 +446,38 @@ export default function Conferencing(props: Conferencing) {
             name="encryption_enabled"
           />
         </Box>
+        {value?.project_template !== ProjectTemplate.LIVE_STREAMING && (
+          <>
+            <Box component="div" className={classes.SwitchContainer}>
+              <Typography
+                variant="caption"
+                className={classes.SwitchText}
+                component="p"
+                style={{marginRight: 'auto'}}>
+                Raise Hand
+              </Typography>
+              <IOSSwitch
+                checked={value.raise_hand as boolean}
+                onChange={handleCheckChange}
+                name="raise_hand"
+              />
+            </Box>
+            <Box component="div" className={classes.SwitchContainer}>
+              <Typography
+                variant="caption"
+                className={classes.SwitchText}
+                component="p"
+                style={{marginRight: 'auto'}}>
+                Publish By Default
+              </Typography>
+              <IOSSwitch
+                checked={value.publish_by_default as boolean}
+                onChange={handleCheckChange}
+                name="publish_by_default"
+              />
+            </Box>
+          </>
+        )}
         <Typography
           variant="caption"
           className={classes.TurboUser}

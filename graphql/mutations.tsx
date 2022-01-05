@@ -90,6 +90,8 @@ export const createNewProjectMutation = gql`
       cloud_recording
       screen_sharing
       encryption_enabled
+      raise_hand
+      publish_by_default
       landing_sub_heading
       primary_font_color
       secondary_font_color

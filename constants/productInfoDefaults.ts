@@ -32,6 +32,8 @@ export interface IProductInfoDefaultObj {
   cloud_recording: Boolean;
   screen_sharing: Boolean;
   encryption_enabled: Boolean;
+  raise_hand: Boolean;
+  publish_by_default: Boolean;
   landing_sub_heading: string;
   primary_font_color: string;
   secondary_font_color: string;
@@ -85,6 +87,8 @@ export const productInfoDefaultObj: IProductInfoDefaultObj = {
   cloud_recording: false,
   screen_sharing: true,
   encryption_enabled: false,
+  raise_hand: false,
+  publish_by_default: false,
   landing_sub_heading: 'Where business happens online, on time, each time.',
   primary_font_color: '#363636',
   secondary_font_color: '#FFFFFF',

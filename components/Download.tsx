@@ -56,6 +56,10 @@ export default function Download(props: DownloadProps) {
             LOGO: props.configData.primary_logo ? reactFileName : '',
             ICON: props.configData.primary_square_logo ? squarFileName : '',
             BG: props.configData.primary_background_logo ? bgFileName : '',
+            LIVE_STREAMING:
+              props.configData.project_template === 'LIVE_STREAMING'
+                ? true
+                : false,
           },
           null,
           2,
