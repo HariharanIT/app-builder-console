@@ -61,7 +61,7 @@ function userReducer(state: ProductInfoContext, action: ProductInfoAction) {
     case 'validate info': {
       return {
         ...state,
-        status: 'inProgress',
+        status: 'pending',
         errors: action.errors,
       };
     }

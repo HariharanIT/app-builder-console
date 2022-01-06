@@ -25,7 +25,8 @@ const AppBuilderControls = ({openDeployModal}: IProjectBuilderControls) => {
   const [showError, setShowError] = useState(false);
   const [showConfirm, setShowConfirmBox] = useState(false);
   const {status, productInfo, dispatch: productInfoDispatch} = useProductInfo();
-  const {setLoading, setAPIError} = useContext(ApiStatusContext);
+  // const {setLoading, setAPIError} = useContext(ApiStatusContext);
+  const {setAPIError} = useContext(ApiStatusContext);
   useEffect(() => {
     // add confirm before saving modal, for unsaved changes
     if (status !== 'complete') {
@@ -39,6 +40,12 @@ const AppBuilderControls = ({openDeployModal}: IProjectBuilderControls) => {
         capture: true,
       });
     }
+    // if (status === 'inProgress') {
+    //   setLoading(true);
+    // }
+    // if (status === 'complete' || status === 'rejected') {
+    //   setLoading(false);
+    // }
   }, [status]);
   const handleSaveProject = async () => {
     let errors = validateBeforeSaving({
@@ -54,9 +61,9 @@ const AppBuilderControls = ({openDeployModal}: IProjectBuilderControls) => {
     }
     // updates in progress
     productInfoUpdateInProgress(productInfoDispatch);
-    setLoading(true, 'Saving your changes..');
+    // setLoading(true, 'Saving your changes..');
     const updatedResponse = await uploadFile({productInfo});
-    setLoading(false);
+    // setLoading(false);
     if (updatedResponse.status === 200) {
       const result = await updatedResponse.json();
       // update completed
@@ -66,7 +73,6 @@ const AppBuilderControls = ({openDeployModal}: IProjectBuilderControls) => {
       throw new Error(`Save Error: API Failure ${updatedResponse}`);
     }
   };
-
   const handleAppDeploy = async () => {
     // if the app is in saved state, open deploy modal
     if (status === 'complete') {
