@@ -51,7 +51,7 @@ const VercelDeploy = () => {
   };
 
   React.useEffect(() => {
-    window.onmessage = function (e: any) {
+    window.addEventListener('message', function (e: any) {
       const {data} = e;
       if (data && data.vercelOAuth) {
         console.log('*vercel authenticated*');
@@ -67,7 +67,7 @@ const VercelDeploy = () => {
           },
         });
       }
-    };
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {

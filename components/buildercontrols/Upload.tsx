@@ -37,7 +37,7 @@ export default function Upload(props: UploadProps) {
     const file =
       event.target.files && event.target.files.length > 0
         ? event.target.files[0]
-        : null;
+        : '';
     if (file && file.size / (1024 * 1024) < 2) {
       props.handler(file, props.name);
     } else {
@@ -74,7 +74,7 @@ export default function Upload(props: UploadProps) {
         color="primary"
         component="label"
         className={classes.uploadBox}
-        disabled={Boolean(typeof props.value !== 'undefined' && props.value)}
+        disabled={Boolean(props.value !== '' && props.value)}
         onClick={() => {
           hiddenInputElement.current.click();
         }}>
@@ -88,12 +88,12 @@ export default function Upload(props: UploadProps) {
             height: '20px',
             width: '120px',
           }}>
-          {typeof props.value !== 'undefined' && props.value
+          {props.value !== '' && props.value
             ? getFileNameFromFile(props.value)
             : 'Select a file'}
         </div>
       </Button>
-      {props.value && (
+      {props.value !== '' && (
         <Box
           fontSize="12px"
           lineHeight={2}
@@ -103,7 +103,7 @@ export default function Upload(props: UploadProps) {
           onClick={(event) => {
             event.stopPropagation();
             hiddenInputElement.current.value = '';
-            props.handler(null, props.name);
+            props.handler('', props.name);
           }}>
           Remove Image.
         </Box>

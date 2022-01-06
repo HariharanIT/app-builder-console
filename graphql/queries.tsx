@@ -88,6 +88,7 @@ export const getHerokuDeployStatus = gql`
     heroku(project_id: $project_id) {
       status
       url
+      message
     }
   }
 `;
@@ -96,6 +97,7 @@ export const getVercelDeployStatus = gql`
     vercel(project_id: $project_id) {
       status
       url
+      message
     }
   }
 `;

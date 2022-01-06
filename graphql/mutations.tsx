@@ -127,6 +127,7 @@ export const publishToHerokuMutation = gql`
     publishToHeroku(project_id: $project_id) {
       status
       url
+      message
     }
   }
 `;
@@ -135,6 +136,7 @@ export const publishToVercelMutation = gql`
     publishToVercel(project_id: $project_id) {
       status
       url
+      message
     }
   }
 `;

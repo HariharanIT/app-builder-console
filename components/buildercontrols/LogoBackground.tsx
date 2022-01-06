@@ -15,7 +15,6 @@ interface LogoBackgroundProps {
 export default function LogoBackground(props: LogoBackgroundProps) {
   const {onClickBack, handleUpload, value} = props;
   const classes = LogoBackgroundStyles();
-
   return (
     <>
       <Box

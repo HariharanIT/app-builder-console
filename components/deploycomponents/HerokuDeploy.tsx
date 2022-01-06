@@ -41,7 +41,8 @@ const HerokuDeploy = () => {
     },
   );
   React.useEffect(() => {
-    window.onmessage = function (e: any) {
+    console.log('setting up heroku auth!!');
+    window.addEventListener('message', function (e: any) {
       const {data} = e;
       console.log('got a window message');
       // this post message {herokuOAuth: true} guarantees that heroku is authenticated
@@ -59,7 +60,7 @@ const HerokuDeploy = () => {
           },
         });
       }
-    };
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
