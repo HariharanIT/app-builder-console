@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useContext} from 'react';
 import {
   Card,
   CardMedia,
@@ -17,6 +17,7 @@ import {DeployStatus} from '../../constants/productInfoDefaults';
 import {publishToHerokuMutation} from '../../graphql/mutations';
 import {getHerokuDeployStatus} from '../../graphql/queries';
 import {getTokenWithourBearer} from '../../graphql/apollo';
+import ApiStatusContext from '../contexts/APIContext';
 
 const HerokuDeploy = () => {
   const classes = DeployStyles();
@@ -24,6 +25,7 @@ const HerokuDeploy = () => {
 
   const {query} = useRouter();
   const {herokuStatus, setHerokuStatus} = useDeploy();
+  const {setAPIError} = useContext(ApiStatusContext);
   const onClickOpenHeroku = () => {
     window.open(`https://dashboard.heroku.com/apps/`);
   };
@@ -76,6 +78,10 @@ const HerokuDeploy = () => {
           herokuStatusPolling();
         }, 1000);
       }
+      if (publishToHeroku.status === DeployStatus.FAILURE) {
+        setAPIError(publishToHeroku.message);
+      }
+
       return () => clearInterval(timer.current);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,6 +97,9 @@ const HerokuDeploy = () => {
         clearInterval(timer.current);
       }
       setHerokuStatus(heroku.status);
+      if (heroku.status === DeployStatus.FAILURE) {
+        setAPIError(heroku.message);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [herokuPollingData]);

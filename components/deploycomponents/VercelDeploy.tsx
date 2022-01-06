@@ -24,7 +24,7 @@ const VercelDeploy = () => {
   let timerVercel = useRef();
   const {query} = useRouter();
   const {productInfo} = useProductInfo();
-  const {vercelStatus, setVercelStatus} = useDeploy();
+  const {vercelStatus, setVercelStatus, herokuStatus} = useDeploy();
 
   const [publishToVercel, {data: vercelPublishData}] = useMutation(
     publishToVercelMutation,
@@ -160,7 +160,8 @@ const VercelDeploy = () => {
           className={classes.Typography2}>
           Deploy Frontend to Vercel
         </Typography>
-        {productInfo.backend_endpoint ? (
+        {productInfo.backend_endpoint ||
+        herokuStatus === DeployStatus.SUCCESS ? (
           <React.Fragment>
             {vercelStatus === DeployStatus.NONE && (
               <Button

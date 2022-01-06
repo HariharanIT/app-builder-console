@@ -47,8 +47,7 @@ const client = new ApolloClient({
   cache,
   defaultOptions: {
     query: {
-      // fetchPolicy: 'network-only',
-      fetchPolicy: 'no-cache',
+      fetchPolicy: 'network-only',
       errorPolicy: 'all',
     },
   },
