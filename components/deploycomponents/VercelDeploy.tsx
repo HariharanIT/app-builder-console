@@ -57,7 +57,8 @@ const VercelDeploy = () => {
   };
 
   React.useEffect(() => {
-    window.addEventListener('message', function (e: any) {
+    const vercelOAuth = (e: any) => {
+      console.log('window message received(vercel oAuth)');
       const {data} = e;
       if (data && data.vercelOAuth) {
         console.log('*vercel authenticated*');
@@ -73,7 +74,13 @@ const VercelDeploy = () => {
           },
         });
       }
-    });
+    };
+    window.addEventListener('message', vercelOAuth);
+
+    return () => {
+      window.removeEventListener('message', vercelOAuth);
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
@@ -201,7 +208,7 @@ const VercelDeploy = () => {
                 className={classes.primaryButton}
                 onClick={() => {
                   // const token: string = csrfToken();
-                  window.localStorage.setItem('deployType', 'frontend');
+                  // window.localStorage.setItem('deployType', 'frontend');
                   window.open(
                     `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
                     'myWindow',
@@ -259,7 +266,7 @@ const VercelDeploy = () => {
                   className={classes.primaryButton}
                   onClick={() => {
                     // const token: string = csrfToken();
-                    window.localStorage.setItem('deployType', 'frontend');
+                    // window.localStorage.setItem('deployType', 'frontend');
                     window.open(
                       `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
                       'myWindow',
