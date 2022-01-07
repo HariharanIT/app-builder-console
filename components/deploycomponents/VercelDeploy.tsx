@@ -81,7 +81,6 @@ const VercelDeploy = () => {
     if (vercelPublishData) {
       // Published to vercel
       const {publishToVercel} = vercelPublishData;
-      console.log({publishToVercel}, 'setting polling 1');
       if (
         publishToVercel.status === DeployStatus.PENDING ||
         publishToVercel.status === DeployStatus.SUCCESS
@@ -90,7 +89,6 @@ const VercelDeploy = () => {
         updateProductInfoComplete(productInfoDispatch, {
           frontend_deploy_status: publishToVercel.status,
         });
-        console.log({publishToVercel}, 'setting polling 2');
         //*start polling for vercel publish status*
         // @ts-ignore
         timerVercel.current = setInterval(() => {
@@ -108,7 +106,6 @@ const VercelDeploy = () => {
   useEffect(() => {
     if (vercelPollingData) {
       const {vercel} = vercelPollingData;
-      console.log({publishToVercel}, 'inside polling 1');
       if (
         vercel.status === DeployStatus.SUCCESS ||
         vercel.status === DeployStatus.FAILURE

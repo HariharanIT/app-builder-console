@@ -124,7 +124,6 @@ const HerokuDeploy = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [herokuPollingData]);
-  console.log({herokuStatus}, {productInfo});
   return (
     <Card
       className={classes.CardContainer}

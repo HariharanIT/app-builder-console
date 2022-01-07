@@ -33,7 +33,6 @@ export default function Upload(props: UploadProps) {
     return file.name;
   };
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handle file upload');
     const file =
       event.target.files && event.target.files.length > 0
         ? event.target.files[0]

@@ -348,6 +348,11 @@ const AppBuilderCustomizeTabs = () => {
   const {errors, dispatch: productInfoDispatch} = useProductInfo();
 
   const {setLoading, setAPIError} = useContext(ApiStatusContext);
+  // if (id === '') {
+  //   // NOTE: This check is for hard/soft refresh when id is not available as props.
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   id = urlParams.get('id');
+  // }
   const {loading, error, data} = useQuery(projectByIdQuery, {
     variables: {
       project_id: id,
