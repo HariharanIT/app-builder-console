@@ -12,19 +12,24 @@ import {
 import {useMutation, useLazyQuery} from '@apollo/client';
 import {useRouter} from 'next/router';
 import {DeployStyles} from '../../styles/DeployDilogStyles';
-import {useDeploy} from '../contexts/DeployContext';
 import {DeployStatus} from '../../constants/productInfoDefaults';
 import {publishToHerokuMutation} from '../../graphql/mutations';
 import {getHerokuDeployStatus} from '../../graphql/queries';
 import {getTokenWithourBearer} from '../../graphql/apollo';
 import ApiStatusContext from '../contexts/APIContext';
+import {
+  useProductInfo,
+  updateProductInfoComplete,
+} from '../contexts/ProductInfoContext';
 
 const HerokuDeploy = () => {
   const classes = DeployStyles();
   let timer = useRef();
+  const {productInfo, dispatch: productInfoDispatch} = useProductInfo();
 
   const {query} = useRouter();
-  const {herokuStatus, setHerokuStatus} = useDeploy();
+  // const {herokuStatus, setHerokuStatus} = useDeploy();
+  const {backend_deploy_status: herokuStatus} = productInfo;
   const {setAPIError} = useContext(ApiStatusContext);
   const onClickOpenHeroku = () => {
     window.open(`https://dashboard.heroku.com/apps/`);
@@ -39,11 +44,10 @@ const HerokuDeploy = () => {
       variables: {
         project_id: query.id,
       },
-      fetchPolicy: 'no-cache',
+      fetchPolicy: 'network-only',
     },
   );
   React.useEffect(() => {
-    console.log('setting up heroku auth!!');
     window.addEventListener('message', function (e: any) {
       const {data} = e;
       console.log('got a window message');
@@ -70,8 +74,15 @@ const HerokuDeploy = () => {
       // Published to heroku
       const {publishToHeroku} = herokuPublishData;
       // setSkip(false);
-      if (publishToHeroku.status === DeployStatus.PENDING) {
-        setHerokuStatus(publishToHeroku.status);
+      if (
+        publishToHeroku.status === DeployStatus.PENDING ||
+        publishToHeroku.status === DeployStatus.SUCCESS
+      ) {
+        // setHerokuStatus(publishToHeroku.status);
+        updateProductInfoComplete(productInfoDispatch, {
+          backend_deploy_status: publishToHeroku.status,
+        });
+
         //*start polling for heroku publish status*
         // @ts-ignore
         timer.current = setInterval(() => {
@@ -96,14 +107,24 @@ const HerokuDeploy = () => {
         // on succes or failure response, clear the polling
         clearInterval(timer.current);
       }
-      setHerokuStatus(heroku.status);
+      // setHerokuStatus(heroku.status);
+      updateProductInfoComplete(productInfoDispatch, {
+        backend_deploy_status: heroku.status,
+      });
+
       if (heroku.status === DeployStatus.FAILURE) {
         setAPIError(heroku.message);
+      }
+      if (heroku.status === DeployStatus.SUCCESS) {
+        updateProductInfoComplete(productInfoDispatch, {
+          backend_endpoint: heroku.url,
+          backend_deploy_status: heroku.status,
+        });
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [herokuPollingData]);
-
+  console.log({herokuStatus}, {productInfo});
   return (
     <Card
       className={classes.CardContainer}

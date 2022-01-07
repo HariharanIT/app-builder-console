@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useContext} from 'react';
 import {
   Card,
   CardMedia,
@@ -12,19 +12,26 @@ import {
 import {useMutation, useLazyQuery} from '@apollo/client';
 import {useRouter} from 'next/router';
 import {DeployStyles} from '../../styles/DeployDilogStyles';
-import {useDeploy} from '../contexts/DeployContext';
+// import {useDeploy} from '../contexts/DeployContext';
 import {DeployStatus} from '../../constants/productInfoDefaults';
 import {publishToVercelMutation} from '../../graphql/mutations';
 import {getVercelDeployStatus} from '../../graphql/queries';
 import {getTokenWithourBearer} from '../../graphql/apollo';
-import {useProductInfo} from '../contexts/ProductInfoContext';
+import ApiStatusContext from '../contexts/APIContext';
+import {
+  useProductInfo,
+  updateProductInfoComplete,
+} from '../contexts/ProductInfoContext';
 
 const VercelDeploy = () => {
   const classes = DeployStyles();
   let timerVercel = useRef();
+  const {productInfo, dispatch: productInfoDispatch} = useProductInfo();
   const {query} = useRouter();
-  const {productInfo} = useProductInfo();
-  const {vercelStatus, setVercelStatus, herokuStatus} = useDeploy();
+  // const {vercelStatus, setVercelStatus, herokuStatus} = useDeploy();
+  const {frontend_deploy_status: vercelStatus} = productInfo;
+
+  const {setAPIError} = useContext(ApiStatusContext);
 
   const [publishToVercel, {data: vercelPublishData}] = useMutation(
     publishToVercelMutation,
@@ -35,7 +42,7 @@ const VercelDeploy = () => {
       variables: {
         project_id: query.id,
       },
-      fetchPolicy: 'no-cache',
+      fetchPolicy: 'network-only',
     },
   );
 
@@ -74,14 +81,26 @@ const VercelDeploy = () => {
     if (vercelPublishData) {
       // Published to vercel
       const {publishToVercel} = vercelPublishData;
-      if (publishToVercel.status === DeployStatus.PENDING) {
-        setVercelStatus(publishToVercel.status);
+      console.log({publishToVercel}, 'setting polling 1');
+      if (
+        publishToVercel.status === DeployStatus.PENDING ||
+        publishToVercel.status === DeployStatus.SUCCESS
+      ) {
+        // setVercelStatus(publishToVercel.status);
+        updateProductInfoComplete(productInfoDispatch, {
+          frontend_deploy_status: publishToVercel.status,
+        });
+        console.log({publishToVercel}, 'setting polling 2');
         //*start polling for vercel publish status*
         // @ts-ignore
         timerVercel.current = setInterval(() => {
           vercelStatusPolling();
         }, 1000);
       }
+      if (publishToVercel.status === DeployStatus.FAILURE) {
+        setAPIError(publishToVercel.message);
+      }
+
       return () => clearInterval(timerVercel.current);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,6 +108,7 @@ const VercelDeploy = () => {
   useEffect(() => {
     if (vercelPollingData) {
       const {vercel} = vercelPollingData;
+      console.log({publishToVercel}, 'inside polling 1');
       if (
         vercel.status === DeployStatus.SUCCESS ||
         vercel.status === DeployStatus.FAILURE
@@ -96,8 +116,23 @@ const VercelDeploy = () => {
         // on succes or failure response, clear the polling
         clearInterval(timerVercel.current);
       }
-      setVercelStatus(vercel.status);
+      // setVercelStatus(vercel.status);
+      updateProductInfoComplete(productInfoDispatch, {
+        frontend_deploy_status: vercel.status,
+      });
+
+      if (vercel.status === DeployStatus.FAILURE) {
+        setAPIError(vercel.message);
+      }
+
+      if (vercel.status === DeployStatus.SUCCESS) {
+        updateProductInfoComplete(productInfoDispatch, {
+          frontend_endpoint: vercel.url,
+          frontend_deploy_status: vercel.status,
+        });
+      }
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vercelPollingData]);
 
@@ -160,8 +195,7 @@ const VercelDeploy = () => {
           className={classes.Typography2}>
           Deploy Frontend to Vercel
         </Typography>
-        {productInfo.backend_endpoint ||
-        herokuStatus === DeployStatus.SUCCESS ? (
+        {productInfo.backend_endpoint ? (
           <React.Fragment>
             {vercelStatus === DeployStatus.NONE && (
               <Button

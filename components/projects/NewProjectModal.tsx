@@ -72,7 +72,7 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
   );
   React.useEffect(() => {
     if (loading) {
-      setLoading(true);
+      setLoading(true, 'Creating your project...');
     }
     if (error) {
       setAPIError(error.message);

@@ -21,6 +21,7 @@ export const ProductInfoContext = createContext(
 ProductInfoContext.displayName = 'ProductInfoContext';
 type ProductInfoAction =
   | {type: 'start update'; updates: {[key: string]: {}}}
+  | {type: 'update complete'; updates: {[key: string]: {}}}
   | {type: 'finish update'; updates: {[key: string]: {}}}
   | {type: 'fail update'; error: {[key: string]: {}}}
   | {type: 'inprogress update'}
@@ -34,6 +35,13 @@ function userReducer(state: ProductInfoContext, action: ProductInfoAction) {
         ...state,
         productInfo: {...state.productInfo, ...action.updates},
         status: 'pending',
+      };
+    }
+    case 'update complete': {
+      return {
+        ...state,
+        productInfo: {...state.productInfo, ...action.updates},
+        status: 'complete',
       };
     }
     case 'finish update': {
@@ -141,6 +149,23 @@ export async function updateProductInfo(
   //   return Promise.reject(error)
   // }
 }
+export async function updateProductInfoComplete(
+  dispatch: {
+    (value: any): void;
+    (value: any): void;
+    (value: any): void;
+    (value: any): void;
+    (value: any): void;
+    (value: any): void;
+    (arg0: {type: string; updates: any}): void;
+  },
+  updates: {
+    [x: string]: string | boolean | LogoStateType;
+  },
+) {
+  dispatch({type: 'update complete', updates});
+}
+
 export async function productInfoUpdateComplete(
   dispatch: {
     (value: any): void;

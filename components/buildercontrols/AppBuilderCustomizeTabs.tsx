@@ -339,6 +339,7 @@ const VerticalFooter = () => {
 const AppBuilderCustomizeTabs = () => {
   // app builder form
   const router = useRouter();
+  console.log({query: router.query});
   const {id = ''} = router.query;
   const SideBarClasses = useSideNavStyles();
   const [display, setDisplayTab] = React.useState<boolean>(true);

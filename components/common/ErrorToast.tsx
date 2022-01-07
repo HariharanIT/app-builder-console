@@ -31,7 +31,6 @@ const ErrorToast = ({
 }) => {
   const {errors: productInfoError} = useProductInfo();
   const BackDropStyle = useBackDropStyles();
-  console.log(productInfoError);
   const {authCred, conferencingCred, productInfo} = productInfoError;
   const {apple, google, microsoft, slack} = authCred;
   const {cloud, pstn} = conferencingCred;
@@ -50,7 +49,6 @@ const ErrorToast = ({
       anchorOrigin={{vertical, horizontal}}
       autoHideDuration={10000}
       onClose={() => {
-        console.log('snackbar');
         setShowError(false);
       }}>
       <Alert
@@ -59,7 +57,6 @@ const ErrorToast = ({
           action: BackDropStyle.closeIconError,
         }}
         onClose={() => {
-          console.log('alert');
           setShowError(false);
         }}
         severity="error">
