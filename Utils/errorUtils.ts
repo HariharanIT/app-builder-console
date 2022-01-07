@@ -100,7 +100,7 @@ const joinScreenValidation = ({
         ...errors,
         slack: {
           ...errors.slack,
-          slack_client_secret: 'Slack OAuth Client ID is a required field',
+          slack_client_secret: 'Slack OAuth Client Secret is a required field',
         },
       };
 
