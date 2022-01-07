@@ -68,9 +68,7 @@ const Projects = ({
   const ProjectClasses = useProjectStyles();
   const [projectList, setProjectList] = React.useState<any>([]);
   const {setLoading, setAPIError} = useContext(ApiStatusContext);
-  const {loading, error, data} = useQuery(projectListQuery(), {
-    fetchPolicy: 'network-only',
-  });
+  const {loading, error, data} = useQuery(projectListQuery());
   React.useEffect(() => {
     if (data) {
       setProjectList(data.projects);

@@ -357,7 +357,6 @@ const AppBuilderCustomizeTabs = () => {
     variables: {
       project_id: id,
     },
-    fetchPolicy: 'network-only',
   });
 
   React.useEffect(() => {

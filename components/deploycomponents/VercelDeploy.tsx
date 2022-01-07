@@ -42,7 +42,6 @@ const VercelDeploy = () => {
       variables: {
         project_id: query.id,
       },
-      fetchPolicy: 'network-only',
     },
   );
 

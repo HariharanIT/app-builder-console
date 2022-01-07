@@ -44,7 +44,6 @@ const HerokuDeploy = () => {
       variables: {
         project_id: query.id,
       },
-      fetchPolicy: 'network-only',
     },
   );
   React.useEffect(() => {
