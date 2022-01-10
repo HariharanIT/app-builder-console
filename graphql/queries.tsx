@@ -39,7 +39,7 @@ export const projectByIdQuery = gql`
       screen_sharing
       encryption_enabled
       raise_hand
-      publish_by_default
+      event_mode
       landing_sub_heading
       primary_font_color
       secondary_font_color

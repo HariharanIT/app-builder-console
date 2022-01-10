@@ -446,37 +446,37 @@ export default function Conferencing(props: Conferencing) {
             name="encryption_enabled"
           />
         </Box>
-        {value?.project_template !== ProjectTemplate.LIVE_STREAMING && (
-          <>
-            <Box component="div" className={classes.SwitchContainer}>
-              <Typography
-                variant="caption"
-                className={classes.SwitchText}
-                component="p"
-                style={{marginRight: 'auto'}}>
-                Raise Hand
-              </Typography>
-              <IOSSwitch
-                checked={value.raise_hand as boolean}
-                onChange={handleCheckChange}
-                name="raise_hand"
-              />
-            </Box>
-            <Box component="div" className={classes.SwitchContainer}>
-              <Typography
-                variant="caption"
-                className={classes.SwitchText}
-                component="p"
-                style={{marginRight: 'auto'}}>
-                Publish By Default
-              </Typography>
-              <IOSSwitch
-                checked={value.publish_by_default as boolean}
-                onChange={handleCheckChange}
-                name="publish_by_default"
-              />
-            </Box>
-          </>
+        <Box component="div" className={classes.SwitchContainer}>
+          <Typography
+            variant="caption"
+            className={classes.SwitchText}
+            component="p"
+            style={{marginRight: 'auto'}}>
+            Event Mode
+          </Typography>
+          <IOSSwitch
+            checked={value.event_mode as boolean}
+            onChange={handleCheckChange}
+            name="event_mode"
+          />
+        </Box>
+        {value.event_mode && (
+          <Box
+            component="div"
+            className={`${classes.SwitchContainer} ${classes.raiseHandIntent}`}>
+            <Typography
+              variant="caption"
+              className={classes.SwitchText}
+              component="p"
+              style={{marginRight: 'auto'}}>
+              Raise Hand
+            </Typography>
+            <IOSSwitch
+              checked={value.raise_hand as boolean}
+              onChange={handleCheckChange}
+              name="raise_hand"
+            />
+          </Box>
         )}
         <Typography
           variant="caption"

@@ -15,7 +15,7 @@ const generateConfigObj = (configData: IProductInfoDefaultObj) => ({
   LANDING_SUB_HEADING: configData.landing_sub_heading || '',
   ENCRYPTION_ENABLED: configData.encryption_enabled,
   RAISE_HAND: configData.raise_hand,
-  PUBLISH_BY_DEFAULT: configData.publish_by_default,
+  EVENT_MODE: configData.event_mode,
   PRIMARY_FONT_COLOR: configData.primary_font_color || '',
   SECONDARY_FONT_COLOR: configData.secondary_font_color || '',
   SENTRY_DSN: configData.sentry_dsn,
