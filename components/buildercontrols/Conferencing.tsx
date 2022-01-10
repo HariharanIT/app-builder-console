@@ -456,7 +456,14 @@ export default function Conferencing(props: Conferencing) {
           </Typography>
           <IOSSwitch
             checked={value.event_mode as boolean}
-            onChange={handleCheckChange}
+            onChange={(e) => {
+              handleCheckChange(e);
+              //if we turn off the event mode then raised hand should be turned off.
+              //so calling handlechange for raise hand
+              handleCheckChange({
+                target: {name: 'raise_hand', checked: e.target.checked},
+              });
+            }}
             name="event_mode"
           />
         </Box>
