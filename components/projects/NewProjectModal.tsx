@@ -88,7 +88,8 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
     }
   }, [data, setLoading, router]);
   const handleCreateNewProject = () => {
-    if (projectName === '') {
+    // check for empty string and white spaces only
+    if (projectName === '' || projectName.trim().length === 0) {
       setValidation(true);
       return;
     }
