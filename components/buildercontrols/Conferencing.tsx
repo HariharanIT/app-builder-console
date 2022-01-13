@@ -458,9 +458,12 @@ export default function Conferencing(props: Conferencing) {
             onChange={(e) => {
               handleCheckChange(e);
               //if we turn off the event mode then raised hand should be turned off.
-              //so calling handlechange for raise hand
-              handleCheckChange({
-                target: {name: 'raise_hand', checked: e.target.checked},
+              //so calling handleValueChange for raise hand to change the value
+              handleValueChange({
+                target: {
+                  name: 'raise_hand',
+                  value: e.target.checked,
+                },
               });
             }}
             name="event_mode"
