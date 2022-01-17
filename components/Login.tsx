@@ -144,7 +144,7 @@ const Login = () => {
             <Box className={styles.xtext}>New to Agora?</Box>
             <Box className={styles.xbtnouter}>
               <a
-                href="https://sso2.agora.io/en/signup?response_type=code&client_id=ece4e8acaa5e488ab5109d3fc66df72b&redirect_uri=http://staging1.rteappbuilder.com/auth/agora&scope=basic_info"
+                href="https://sso2.agora.io/en/signup?response_type=code&client_id=ece4e8acaa5e488ab5109d3fc66df72b&redirect_uri=https://staging1.rteappbuilder.com/auth/agora&scope=basic_info"
                 target="_blank">
                 <button type="button" className={styles.xbtn}>
                   Sign Up
