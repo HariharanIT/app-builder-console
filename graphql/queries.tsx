@@ -101,3 +101,13 @@ export const getVercelDeployStatus = gql`
     }
   }
 `;
+
+export const downloadSourceCode = gql`
+  query ($project_id: ID!) {
+    source_code(project_id: $project_id) {
+      npm_package
+      theme
+      config
+    }
+  }
+`;

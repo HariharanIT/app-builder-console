@@ -22,6 +22,7 @@ import {
   useProductInfo,
   updateProductInfoComplete,
 } from '../contexts/ProductInfoContext';
+import {VERCEL_URL} from '../../constants/config';
 
 const VercelDeploy = () => {
   const classes = DeployStyles();
@@ -210,7 +211,7 @@ const VercelDeploy = () => {
                   // const token: string = csrfToken();
                   // window.localStorage.setItem('deployType', 'frontend');
                   window.open(
-                    `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
+                    `${VERCEL_URL}?state=token=${getTokenWithourBearer()}`,
                     'myWindow',
                     'width=1015,height=580',
                   );
@@ -248,7 +249,7 @@ const VercelDeploy = () => {
                   onClick={() => {
                     // const token: string = csrfToken();
                     window.open(
-                      `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
+                      `${VERCEL_URL}?state=token=${getTokenWithourBearer()}`,
                       'myWindow',
                       'width=1015,height=580',
                     );
@@ -268,7 +269,7 @@ const VercelDeploy = () => {
                     // const token: string = csrfToken();
                     // window.localStorage.setItem('deployType', 'frontend');
                     window.open(
-                      `https://vercel.com/integrations/app-builder-staging/new?state=token=${getTokenWithourBearer()}`,
+                      `${VERCEL_URL}?state=token=${getTokenWithourBearer()}`,
                       'myWindow',
                       'width=1015,height=580',
                     );

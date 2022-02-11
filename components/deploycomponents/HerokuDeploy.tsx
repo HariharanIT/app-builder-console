@@ -21,6 +21,11 @@ import {
   useProductInfo,
   updateProductInfoComplete,
 } from '../contexts/ProductInfoContext';
+import {
+  REDIRECT_URL,
+  HEROKU_URL,
+  HEROKU_CLIENT_ID,
+} from '../../constants/config';
 
 const HerokuDeploy = () => {
   const classes = DeployStyles();
@@ -196,7 +201,7 @@ const HerokuDeploy = () => {
               className={classes.primaryButton}
               onClick={() => {
                 window.open(
-                  `https://id.heroku.com/oauth/authorize?scope=global&response_type=code&state=token=${getTokenWithourBearer()}&redirect_uri=https://staging1.rteappbuilder.com/auth/heroku&client_id=9a6d5978-6915-483c-8b6f-2ab1e1961754`,
+                  `${HEROKU_URL}?scope=global&response_type=code&state=token=${getTokenWithourBearer()}&redirect_uri=${REDIRECT_URL}/heroku&client_id=${HEROKU_CLIENT_ID}`,
                   'myWindow',
                   'width=1015,height=580',
                 );
@@ -231,7 +236,7 @@ const HerokuDeploy = () => {
                 className={classes.primaryButton}
                 onClick={() => {
                   window.open(
-                    `https://id.heroku.com/oauth/authorize?scope=global&response_type=code&state=token=${getTokenWithourBearer()}&redirect_uri=https://staging1.rteappbuilder.com/auth/heroku&client_id=9a6d5978-6915-483c-8b6f-2ab1e1961754`,
+                    `${HEROKU_URL}?scope=global&response_type=code&state=token=${getTokenWithourBearer()}&redirect_uri=${REDIRECT_URL}/heroku&client_id=${HEROKU_CLIENT_ID}`,
                     'myWindow',
                     'width=1015,height=580',
                   );
@@ -249,7 +254,7 @@ const HerokuDeploy = () => {
                 className={classes.primaryButton}
                 onClick={() => {
                   window.open(
-                    `https://id.heroku.com/oauth/authorize?scope=global&response_type=code&state=token=${getTokenWithourBearer()}&redirect_uri=https://staging1.rteappbuilder.com/auth/heroku&client_id=9a6d5978-6915-483c-8b6f-2ab1e1961754`,
+                    `${HEROKU_URL}?scope=global&response_type=code&state=token=${getTokenWithourBearer()}&redirect_uri=${REDIRECT_URL}/heroku&client_id=${HEROKU_CLIENT_ID}`,
                     'myWindow',
                     'width=1015,height=580',
                   );

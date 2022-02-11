@@ -7,6 +7,7 @@ import {
   from,
 } from '@apollo/client';
 const cache = new InMemoryCache({addTypename: false});
+import {BACKEND_URL} from '../constants/config';
 
 export const getTokenWithourBearer = () => {
   if (typeof window !== 'undefined') {
@@ -40,7 +41,7 @@ const client = new ApolloClient({
   link: from([
     authMiddleware,
     new HttpLink({
-      uri: 'https://staging1.rteappbuilder.com/graphql',
+      uri: `${BACKEND_URL}/graphql`,
       fetch,
     }),
   ]),

@@ -1,7 +1,6 @@
 import {getToken} from '../graphql/apollo';
 import {IProductInfoDefaultObj} from '../constants/productInfoDefaults';
-
-const url = 'https://staging1.rteappbuilder.com/';
+import {BACKEND_URL} from '../constants/config';
 
 export const uploadFile = async ({
   productInfo,
@@ -28,7 +27,7 @@ export const uploadFile = async ({
   };
 
   const response = await fetch(
-    `${url}update?project=${productInfo.id}`,
+    `${BACKEND_URL}update?project=${productInfo.id}`,
     requestOptions,
   );
 

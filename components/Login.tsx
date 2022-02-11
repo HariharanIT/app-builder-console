@@ -1,5 +1,11 @@
 import React from 'react';
 import {Box, createStyles, makeStyles} from '@material-ui/core';
+import {
+  AGORA_SSO_SIGNUP,
+  AGORA_SSO_LOGIN,
+  REDIRECT_URL,
+  AGORA_SSO_CLIENT_ID,
+} from '../constants/config';
 // import styles from './auth.module.css';
 
 const Login = () => {
@@ -144,7 +150,7 @@ const Login = () => {
             <Box className={styles.xtext}>New to Agora?</Box>
             <Box className={styles.xbtnouter}>
               <a
-                href="https://sso2.agora.io/en/signup?response_type=code&client_id=ece4e8acaa5e488ab5109d3fc66df72b&redirect_uri=https://staging1.rteappbuilder.com/auth/agora&scope=basic_info"
+                href={`${AGORA_SSO_SIGNUP}?response_type=code&client_id=${AGORA_SSO_CLIENT_ID}&redirect_uri=${REDIRECT_URL}/agora&scope=basic_info`}
                 target="_blank">
                 <button type="button" className={styles.xbtn}>
                   Sign Up
@@ -155,7 +161,7 @@ const Login = () => {
             <Box className={styles.xtext}>Already have an account?</Box>
             <Box className={styles.xbtnouter}>
               <a
-                href={` https://sso2.agora.io/api/v0/oauth/authorize?scope=basic_info&response_type=code&state=url=${window.location.origin}/redirect&redirect_uri=https://staging1.rteappbuilder.com/auth/agora&client_id=ece4e8acaa5e488ab5109d3fc66df72b`}>
+                href={`${AGORA_SSO_LOGIN}?scope=basic_info&response_type=code&state=url=${window.location.origin}/redirect&redirect_uri=${REDIRECT_URL}/agora&client_id=${AGORA_SSO_CLIENT_ID}`}>
                 <button type="button" className={styles.xbtn}>
                   Login
                 </button>
