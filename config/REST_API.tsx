@@ -27,7 +27,7 @@ export const uploadFile = async ({
   };
 
   const response = await fetch(
-    `${BACKEND_URL}update?project=${productInfo.id}`,
+    `${BACKEND_URL}/update?project=${productInfo.id}`,
     requestOptions,
   );
 
