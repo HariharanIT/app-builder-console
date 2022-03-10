@@ -45,7 +45,7 @@ export const useCardStyles = makeStyles(() =>
 const ProjectCard = ({
   id,
   product_name,
-  created_at,
+  updated_at,
   primary_font_color,
   landing_sub_heading,
   primary_color,
@@ -92,7 +92,7 @@ IProject) => {
             variant="caption"
             className={CardClasses.caption3}
             component="p">
-            {moment(created_at).format('MMM DD, yyyy')}
+            {moment(updated_at).format('MMM DD, yyyy')}
           </Typography>
         </CardContent>
         {/* NOTE: Project delete is kept on hold for further discussion */}

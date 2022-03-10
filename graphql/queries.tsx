@@ -7,7 +7,7 @@ export const projectListQuery = (): DocumentNode => {
         id
         product_name
         primary_background_logo
-        created_at
+        updated_at
         primary_font_color
         landing_sub_heading
         primary_color

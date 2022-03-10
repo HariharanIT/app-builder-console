@@ -11,7 +11,7 @@ import ProjectCard from './ProjectCard';
 export interface IProjectMeta {
   id: string;
   product_name: string;
-  created_at: string;
+  updated_at: string;
   primary_font_color: string;
   landing_sub_heading: string;
   primary_color: string;
