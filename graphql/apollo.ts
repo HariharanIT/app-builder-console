@@ -43,7 +43,7 @@ const client = new ApolloClient({
     new HttpLink({
       uri: `${BACKEND_URL}/graphql`,
       fetch,
-      credentials: 'include',
+      credentials: 'same-origin',
     }),
   ]),
   cache,
