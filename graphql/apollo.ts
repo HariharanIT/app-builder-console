@@ -38,12 +38,12 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 const client = new ApolloClient({
+  credentials: 'include',
   link: from([
     authMiddleware,
     new HttpLink({
       uri: `${BACKEND_URL}/graphql`,
       fetch,
-      credentials: 'same-origin',
     }),
   ]),
   cache,
