@@ -21,9 +21,9 @@ export const uploadFile = async ({
     method: 'POST',
     body: formData,
     redirect: 'follow',
-    headers: new Headers({
-      Authorization: getToken(),
-    }),
+    // headers: new Headers({
+    //   Authorization: getToken(),
+    // }),
   };
 
   const response = await fetch(

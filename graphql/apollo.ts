@@ -31,7 +31,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({headers = {}}) => ({
     headers: {
       ...headers,
-      authorization: getToken(),
+      // authorization: getToken(),
     },
   }));
 
