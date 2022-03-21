@@ -431,6 +431,8 @@ export default function JoinScreen(props: JoinScreenProps) {
             <TextField
               error={appleAuthErr.apple_private_key !== undefined}
               className={classes.textField}
+              multiline
+              maxRows={4}
               label="Apple private key"
               name="apple_private_key"
               variant="outlined"
