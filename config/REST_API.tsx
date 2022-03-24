@@ -1,4 +1,4 @@
-import {getToken} from '../graphql/apollo';
+// import {getToken} from '../graphql/apollo';
 import {IProductInfoDefaultObj} from '../constants/productInfoDefaults';
 import {BACKEND_URL} from '../constants/config';
 
