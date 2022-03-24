@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import Router from 'next/router';
 import AppBuilderDesktopControls from './AppBuilderDesktopControls';
 import AppBuilderMobileControls from './AppBuilderMobileControls';
 import ApiStatusContext from '../contexts/APIContext';
@@ -70,6 +71,9 @@ const AppBuilderControls = ({openDeployModal}: IProjectBuilderControls) => {
       productInfoUpdateComplete(productInfoDispatch, result);
     } else {
       setAPIError(updatedResponse.statusText);
+      if (updatedResponse.status === 401) {
+        Router.replace('/login');
+      }
       throw new Error(`Save Error: API Failure ${updatedResponse}`);
     }
   };
