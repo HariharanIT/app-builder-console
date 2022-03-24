@@ -20,9 +20,6 @@ export const uploadFile = async ({
     method: 'POST',
     body: formData,
     redirect: 'follow',
-    headers: new Headers({
-      Authorization: getToken(),
-    }),
     credentials: 'include',
   };
 
