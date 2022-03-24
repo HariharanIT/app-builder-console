@@ -134,6 +134,10 @@ const Login = () => {
   const styles = useAuthstyle();
 
   //   return <>This is sparts</>;
+  let originURL = '';
+  if (typeof window !== 'undefined') {
+    originURL = window.location.origin;
+  }
   return (
     <>
       <Box className={styles.xmain}>
@@ -161,7 +165,7 @@ const Login = () => {
             <Box className={styles.xtext}>Already have an account?</Box>
             <Box className={styles.xbtnouter}>
               <a
-                href={`${AGORA_SSO_LOGIN}?scope=basic_info&response_type=code&state=url=${window.location.origin}/redirect&redirect_uri=${REDIRECT_URL}/agora&client_id=${AGORA_SSO_CLIENT_ID}`}>
+                href={`${AGORA_SSO_LOGIN}?scope=basic_info&response_type=code&state=url=${originURL}/redirect&redirect_uri=${REDIRECT_URL}/agora&client_id=${AGORA_SSO_CLIENT_ID}`}>
                 <button type="button" className={styles.xbtn}>
                   Login
                 </button>

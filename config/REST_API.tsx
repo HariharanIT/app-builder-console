@@ -7,7 +7,6 @@ export const uploadFile = async ({
 }: {
   productInfo: IProductInfoDefaultObj;
 }) => {
-  console.log({productInfo});
   const formData = new FormData();
   for (let key in productInfo) {
     // @ts-ignore
@@ -24,6 +23,7 @@ export const uploadFile = async ({
     headers: new Headers({
       Authorization: getToken(),
     }),
+    credentials: 'include',
   };
 
   const response = await fetch(
