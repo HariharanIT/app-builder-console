@@ -77,5 +77,8 @@ export const ProdcuctInfoStyles = makeStyles(() =>
       fontWeight: 400,
       marginBottom: '20px',
     },
+    raiseHandIntent: {
+      paddingLeft: '15px',
+    },
   }),
 );

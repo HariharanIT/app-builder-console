@@ -157,6 +157,7 @@ const NewProjectModal = ({handleClose, isOpen}: IProjectModal) => {
               value={projectTemplate}
               name="Project_Template">
               <option value="MEETING">Video Meetings</option>
+              <option value="LIVE_STREAMING">Live Streaming</option>
               {template.map((value, index) => (
                 <option value={value} key={index} disabled>
                   {value}
