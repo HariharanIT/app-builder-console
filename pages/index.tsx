@@ -522,13 +522,14 @@ function Home() {
                 </Box>
               </MenuItem> */}
               <MenuItem>
-                <Link href="/create" style={{textDecoration: 'none'}}>
-                  <Box
-                    className={NavbarClasses.button}
-                    style={{border: '1px solid #00AEFC'}}>
-                    Try it Now
-                  </Box>
-                </Link>
+                {/* <Link href="/create" style={{textDecoration: 'none'}}> */}
+                <Box
+                  className={NavbarClasses.button}
+                  style={{border: '1px solid #00AEFC'}}
+                  onClick={() => setUnderMaintenance(true)}>
+                  Try it Now
+                </Box>
+                {/* </Link> */}
               </MenuItem>
             </Menu>
           </Box>
@@ -557,12 +558,13 @@ function Home() {
             </Box>
             <br />
             <Box className={ContainerClasses.oneContainerButton}>
-              <Link href="/create" style={{textDecoration: 'none'}}>
-                <Button
-                  className={`${ContainerClasses.tryItNow} ${ContainerClasses.button}`}>
-                  Try it Now
-                </Button>
-              </Link>
+              {/* <Link href="/create" style={{textDecoration: 'none'}}> */}
+              <Button
+                className={`${ContainerClasses.tryItNow} ${ContainerClasses.button}`}
+                onClick={() => setUnderMaintenance(true)}>
+                Try it Now
+              </Button>
+              {/* </Link> */}
               <Box ml={5}>
                 <Button
                   className={ContainerClasses.seeHowItBtn}
