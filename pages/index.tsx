@@ -1052,13 +1052,14 @@ function Home() {
       </div>
       <Box mt={20} mb={20} textAlign="center">
         <Box margin="auto">
-          <Link href="/create" style={{textDecoration: 'none'}}>
-            <Button
-              style={{backgroundColor: '#00AEFC'}}
-              className={ContainerClasses.button}>
-              Launch your product today
-            </Button>
-          </Link>
+          {/* <Link href="/create" style={{textDecoration: 'none'}}> */}
+          <Button
+            style={{backgroundColor: '#00AEFC'}}
+            className={ContainerClasses.button}
+            onClick={() => setUnderMaintenance(true)}>
+            Launch your product today
+          </Button>
+          {/* </Link> */}
         </Box>
       </Box>
       <Box
@@ -1075,16 +1076,14 @@ function Home() {
             Get 10,000 minutes FREE every month
           </Box>
           <br />
-          <Link href="/create" style={{textDecoration: 'none'}}>
-            <Button
-              onClick={() => {
-                window.open('https://sso.agora.io/en/signup');
-              }}
-              style={{backgroundColor: '#00AEFC'}}
-              className={ContainerClasses.button}>
-              Get Started
-            </Button>
-          </Link>
+          {/* <Link href="/create" style={{textDecoration: 'none'}}> */}
+          <Button
+            onClick={() => setUnderMaintenance(true)}
+            style={{backgroundColor: '#00AEFC'}}
+            className={ContainerClasses.button}>
+            Get Started
+          </Button>
+          {/* </Link> */}
         </Box>
       </Box>
       <Box
@@ -1149,14 +1148,14 @@ function Home() {
                     your business starts to scale. No credit card required.
                   </Box>
                   <br />
-                  <a
-                    href="https://sso.agora.io/en/signup"
+                  {/* <a
+                    href="https://sso2.agora.io/en/signup"
                     style={{textDecoration: 'unset'}}
                     target="_blank">
                     <Box color="white" className={ContainerClasses.font16}>
                       Get Started&nbsp;{'>>'}
                     </Box>
-                  </a>
+                  </a> */}
                 </Box>
               </Grid>
             </Grid>
@@ -1448,14 +1447,14 @@ function Home() {
                     Support Plans
                   </a>
                 </Box>
-                <Box lineHeight={2.5} className={ContainerClasses.font16}>
+                {/* <Box lineHeight={2.5} className={ContainerClasses.font16}>
                   <a
-                    href="https://sso.agora.io/en/signup"
+                    href="https://sso2.agora.io/en/signup"
                     className={ContainerClasses.socialLink}
                     target="_blank">
                     Get Started
                   </a>
-                </Box>
+                </Box> */}
                 <Box lineHeight={2.5} className={ContainerClasses.font16}>
                   <a
                     href="https://www.agora.io/en/developer-resources/"
