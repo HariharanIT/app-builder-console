@@ -42,5 +42,7 @@ const generateConfigObj = (configData: IProductInfoDefaultObj) => ({
   PSTN_PASSWORD: configData.pstn_password || '',
   PSTN_ACCOUNT: configData.pstn_account || '',
   PROFILE: '480p_8',
+  RAISE_HAND: configData.raise_hand,
+  EVENT_MODE: configData.event_mode,
 });
 export default generateConfigObj;

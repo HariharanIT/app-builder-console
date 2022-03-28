@@ -445,6 +445,48 @@ export default function Conferencing(props: Conferencing) {
             name="encryption_enabled"
           />
         </Box>
+        <Box component="div" className={classes.SwitchContainer}>
+          <Typography
+            variant="caption"
+            className={classes.SwitchText}
+            component="p"
+            style={{marginRight: 'auto'}}>
+            Event Mode
+          </Typography>
+          <IOSSwitch
+            checked={value.event_mode as boolean}
+            onChange={(e) => {
+              handleCheckChange(e);
+              //if we turn off the event mode then raised hand should be turned off.
+              //so calling handleValueChange for raise hand to change the value
+              handleValueChange({
+                target: {
+                  name: 'raise_hand',
+                  value: e.target.checked,
+                },
+              });
+            }}
+            name="event_mode"
+          />
+        </Box>
+        {value.event_mode && (
+          <Box
+            component="div"
+            className={`${classes.SwitchContainer} ${classes.raiseHandIntent}`}>
+            <Typography
+              variant="caption"
+              className={classes.SwitchText}
+              component="p"
+              style={{marginRight: 'auto'}}>
+              Raise Hand
+            </Typography>
+            <IOSSwitch
+              checked={value.raise_hand as boolean}
+              onChange={handleCheckChange}
+              name="raise_hand"
+            />
+          </Box>
+        )}
         <Typography
           variant="caption"
           className={classes.TurboUser}

@@ -69,6 +69,9 @@ export const projectByIdQuery = gql`
       backend_deploy_status
       frontend_endpoint
       backend_endpoint
+      project_template
+      raise_hand
+      event_mode
     }
   }
 `;
