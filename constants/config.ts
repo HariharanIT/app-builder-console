@@ -1,9 +1,9 @@
-const BACKEND_URL = 'https://rteappbuilder.com';
-const HEROKU_CLIENT_ID = '50a0133a-f861-42fd-8167-c2da533789dd';
+const BACKEND_URL = 'https://appbuilderapi.agora.io';
+const HEROKU_CLIENT_ID = 'd64cec64-32ed-4451-83f9-ed2e0a26f5c0';
 const AGORA_SSO_CLIENT_ID = 'ece4e8acaa5e488ab5109d3fc66df72b';
-const VERCEL_URL = 'https://vercel.com/integrations/app-builder-preprod/new';
+const VERCEL_URL = 'https://vercel.com/integrations/app-builder-console/new';
 const HEROKU_URL = 'https://id.heroku.com/oauth/authorize';
-const REDIRECT_URL = 'https://rteappbuilder.com/auth';
+const REDIRECT_URL = 'https://appbuilderapi.agora.io/auth';
 const AGORA_SSO_SIGNUP = 'https://sso2.agora.io/en/signup';
 const AGORA_SSO_LOGIN = 'https://sso2.agora.io/api/v0/oauth/authorize';
 
