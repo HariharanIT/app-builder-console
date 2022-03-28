@@ -454,13 +454,14 @@ function Home() {
               }>
               <Box color={navWhite ? 'black' : 'white'}>Get Support</Box>
             </Button>
-            <Link href="/create">
-              <Button
-                className={NavbarClasses.button}
-                style={{border: '2px solid #00AEFC'}}>
-                <Box color={navWhite ? 'black' : 'white'}>Try it Now</Box>
-              </Button>
-            </Link>
+            {/* <Link href="/create"> */}
+            <Button
+              className={NavbarClasses.button}
+              style={{border: '2px solid #00AEFC'}}
+              onClick={() => setUnderMaintenance(true)}>
+              <Box color={navWhite ? 'black' : 'white'}>Try it Now</Box>
+            </Button>
+            {/* </Link> */}
           </Box>
           <Box
             mx={7}
